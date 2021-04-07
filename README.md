@@ -3,8 +3,11 @@
 ### Team members
 
 Turák Samuel
+
 Vala David
+
 Vaněk Pavel
+
 Varmužová Zdeňka
 
 [Project folder link](https://github.com/Bobik77/Digital_electronic_project)
