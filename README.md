@@ -1,20 +1,22 @@
 # Parking assistant with HC-SR04 ultrasonic sensor
 
-### Team members
+### Team members:
 
-Turák Samuel
+Turák Samuel   `ID: xxxxxxx`
 
-Vala David
+Vala David  `ID: xxxxxxx`
 
-Vaněk Pavel
+Vaněk Pavel  `ID: 221072`
 
-Varmužová Zdeňka
+Varmužová Zdeňka `ID: xxxxxxx`
+
+Zbořil Dominik `ID: xxxxxxx`
 
 [Project folder link](https://github.com/Bobik77/Digital_electronic_project)
 
 
 # Základní skica topologie
-![](doc/work_schelude.png)
+![work_schelude](Doc/work_schelude.png)
 # Rozvrh práce
 Do 16.4. mějme hotové source kódy. Během víkendu to dáme dohromady a zkusíme první funkčnost. Níže je rozpis práce jednotlivých členů. Libovolně upravujte připisujte, založte si vlastní oddíl...
 
@@ -59,4 +61,5 @@ Do 16.4. mějme hotové source kódy. Během víkendu to dáme dohromady a zkus�
 # Notes
 *Sem pište obecné připomínky, myšlenky, o kterých chcete informovat ostatní. Pro zbytek si založte ve složce dokumentace `Doc` vlastní podsložku která se bude vztahovat k dokumantaci vašeho bloku systému*
 
-Kdyby cokoliv hořelo, volejte **kdykoliv** na muj tel 731937719, nebo napište na discord.
+* Kdyby cokoliv hořelo, volejte **kdykoliv** na muj tel 731937719, nebo napište na discord.
+* dopište nahoru do sekce members svoje id
