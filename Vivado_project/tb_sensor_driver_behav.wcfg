@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_sensor_driver_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="tb_sensor_driver" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="2659971034fs"></ZoomStartTime>
+      <ZoomEndTime time="2660234835fs"></ZoomEndTime>
+      <Cursor1Time time="2660025000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="158"></NameColumnWidth>
+      <ValueColumnWidth column_width="68"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="8" />
+   <wvobject fp_name="/tb_sensor_driver/s_clk" type="logic">
+      <obj_property name="ElementShortName">s_clk</obj_property>
+      <obj_property name="ObjectShortName">s_clk</obj_property>
+      <obj_property name="CustomSignalColor">#00FF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_sensor_driver/s_rst" type="logic">
+      <obj_property name="ElementShortName">s_rst</obj_property>
+      <obj_property name="ObjectShortName">s_rst</obj_property>
+      <obj_property name="CustomSignalColor">#00FF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_sensor_driver/s_trigger" type="logic">
+      <obj_property name="ElementShortName">s_trigger</obj_property>
+      <obj_property name="ObjectShortName">s_trigger</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_sensor_driver/s_echo" type="logic">
+      <obj_property name="ElementShortName">s_echo</obj_property>
+      <obj_property name="ObjectShortName">s_echo</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_sensor_driver/uut_sensor_driver/s_state" type="other">
+      <obj_property name="ElementShortName">s_state</obj_property>
+      <obj_property name="ObjectShortName">s_state</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_sensor_driver/s_distance" type="array">
+      <obj_property name="ElementShortName">s_distance[7:0]</obj_property>
+      <obj_property name="ObjectShortName">s_distance[7:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_sensor_driver/uut_sensor_driver/s_counter" type="other">
+      <obj_property name="ElementShortName">s_counter</obj_property>
+      <obj_property name="ObjectShortName">s_counter</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_sensor_driver/uut_sensor_driver/s_distance" type="other">
+      <obj_property name="ElementShortName">s_distance</obj_property>
+      <obj_property name="ObjectShortName">s_distance</obj_property>
+   </wvobject>
+</wave_config>
