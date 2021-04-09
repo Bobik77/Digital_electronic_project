@@ -80,14 +80,44 @@ begin
         p_sensor_simulation : process
         begin
             s_echo <= '0';
-            while now < 1000 ms loop -- 1 sec of simulation
+            -- normal distance 26.8cm
                 wait until rising_edge(s_trigger); -- rise of trigger
                 wait until falling_edge(s_trigger);-- fall of trigger
                 wait for 800 us; --tarry
                 s_echo <= '1';
-                wait for 1561 us; -- echo pulse width
+                wait for 1560 us; -- echo pulse width
                 s_echo <= '0';  
-            end loop;
+                
+            -- theoretical distance 1 cm
+                wait until rising_edge(s_trigger); -- rise of trigger
+                wait until falling_edge(s_trigger);-- fall of trigger
+                wait for 800 us; --tarry
+                s_echo <= '1';
+                wait for 58 us; -- echo pulse width 58
+                s_echo <= '0';
+             
+              -- Max distance 255 cm   
+                wait until rising_edge(s_trigger); -- rise of trigger
+                wait until falling_edge(s_trigger);-- fall of trigger
+                wait for 800 us; --tarry
+                s_echo <= '1';
+                wait for 190790 us; -- echo pulse width
+                s_echo <= '0';
+                
+              -- Fault not responding 
+                wait until rising_edge(s_trigger); -- rise of trigger
+                wait until falling_edge(s_trigger);-- fall of trigger
+
+                
+              -- Fault too long echo pulse    
+                wait until rising_edge(s_trigger); -- rise of trigger
+                wait until falling_edge(s_trigger);-- fall of trigger
+                wait for 800 us; --tarry
+                s_echo <= '1';
+                wait for 15000 us; -- echo pulse width
+                s_echo <= '0';
+                
+                
         end process p_sensor_simulation;
         
 end Behavioral;

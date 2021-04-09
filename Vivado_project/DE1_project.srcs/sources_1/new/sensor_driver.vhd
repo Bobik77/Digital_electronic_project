@@ -16,7 +16,11 @@
 -- Revision:
 -- Revision 0.01 - File Created
 -- Additional Comments:
--- 
+--      Output is 8b vector with distance (in cm)
+--      Special reserved events messagesare:
+--          - Too far obstacle:         "11111111"
+--          - Sensor is not responding> "00000000" 
+--          ...anything else is distance
 ----------------------------------------------------------------------------------
 
 
@@ -45,13 +49,18 @@ architecture Behavioral of sensor_driver is
                    fault);
     signal s_state : t_state := idle; -- define actual state variable 
     signal s_counter : integer := 980000; --preset for shorten first interval
-    signal s_distance : std_logic_vector(7 downto 0);
+    signal s_distance : integer := 0; -- int for calculating distance
+--    signal s_distance : std_logic_vector(7 downto 0);
     
     -- Timing constants in ticks (clk tick = 10ns)
     constant c_idle_time : integer := 1000000;  --(10ms) delay between measurings
     constant c_trigger_time : integer := 10000;  --(100us) trigger time width
     constant c_fault_overtime : integer := 200000;  --(2ms)fault state, if echo sig. didnt rise to this time
     constant c_max_echo_time : integer := 19000000;  --(190ms) if is echo pulse longer than this >> too far obstacle
+    
+    -- Defined output messsages  for special states
+    constant c_out_msg_not_respond : std_logic_vector(7 downto 0) := "00000000"; -- not respond
+    constant c_out_msg_too_far  : std_logic_vector(7 downto 0) := "11111111"; -- too far obstacle to sense it 
     
 begin
     sensor_get_data : process (clk)
@@ -62,8 +71,12 @@ begin
                 s_state <= idle;
                 trigger_o <= '0'; 
             end if; -- Reset
+            
+            -- Every clk tickrutines:
             -- increment counter every clk tick
             s_counter <= s_counter + 1;
+            -- actualise output vector
+            distance_o <= std_logic_vector(to_unsigned(s_distance, 8));
             
             case s_state is
                when idle =>
@@ -90,29 +103,39 @@ begin
                         s_state <= counting;  -- change state
                     -- fault detection (disconnected sensor) if not respond
                     elsif (s_counter >= c_fault_overtime) then
+                        distance_o <= c_out_msg_not_respond; -- set special event message
                         s_state <= fault;
+                        s_counter <= 0;   -- reset counter
                     end if;
                
                when counting =>
                -- wait for fall of echo pulse and count time
                     if (echo_i = '0') then
-                        -- do one tick correctio
-                        s_counter <= s_counter + 1;
-                        -- todo translation to output 
-                        distance_o <= "11111111";
+                        -- compute distance (in cm), one tick correction 
+                        s_distance <= s_counter/5800;  
+                        -- range threatment
+                        if (s_distance > 255) then s_distance <= 255; end if;  -- Max of range
+                        if (s_distance < 1)   then s_distance <= 1;   end if;  -- Min of range  
+                        -- mazbe TODO threatment of range of sensor itself (2cm-4meters)
+                        -- TODO threatments are not funstion
                         s_counter <= 0;   -- reset counter
                         s_state <= idle;  -- change state
-                    --  too far obstacle if not respond for 190ms
+                    --  too far obstacle if echo pulse is too long
                     elsif (s_counter >= c_max_echo_time) then
+                         distance_o <= c_out_msg_too_far; -- set special event message
                         s_state <= fault;
+                         s_counter <= 0;   -- reset counter
                     end if;
                     
                when fault =>
-                    distance_o <= "00000000"; -- set output to disabled status
-                    s_counter <= 0;   -- reset counter
-                    s_state <= idle;  -- change state
-                    -- in case of fault try again to send trigger
- 
+               -- do this case in the case of too long echo pulse,
+               -- or if echo pulse will not appear
+               -- could be used for generating fault signal if needed
+                   if (s_counter >= 2000) then
+                        s_counter <= 0;   -- reset counter
+                        s_state <= idle;  -- change state
+                        -- in case of fault try again to send trigger
+                   end if;
             end case;
                 
         end if; -- Rising edge

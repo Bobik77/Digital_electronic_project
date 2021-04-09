@@ -10,15 +10,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="9927000000fs"></ZoomStartTime>
-      <ZoomEndTime time="26467000001fs"></ZoomEndTime>
-      <Cursor1Time time="10987000000fs"></Cursor1Time>
+      <ZoomStartTime time="2659971034fs"></ZoomStartTime>
+      <ZoomEndTime time="2660234835fs"></ZoomEndTime>
+      <Cursor1Time time="2660025000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="116"></NameColumnWidth>
-      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+      <NameColumnWidth column_width="158"></NameColumnWidth>
+      <ValueColumnWidth column_width="68"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="7" />
+   <WVObjectSize size="8" />
    <wvobject fp_name="/tb_sensor_driver/s_clk" type="logic">
       <obj_property name="ElementShortName">s_clk</obj_property>
       <obj_property name="ObjectShortName">s_clk</obj_property>
@@ -52,9 +52,16 @@
    <wvobject fp_name="/tb_sensor_driver/s_distance" type="array">
       <obj_property name="ElementShortName">s_distance[7:0]</obj_property>
       <obj_property name="ObjectShortName">s_distance[7:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_sensor_driver/uut_sensor_driver/s_counter" type="other">
       <obj_property name="ElementShortName">s_counter</obj_property>
       <obj_property name="ObjectShortName">s_counter</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_sensor_driver/uut_sensor_driver/s_distance" type="other">
+      <obj_property name="ElementShortName">s_distance</obj_property>
+      <obj_property name="ObjectShortName">s_distance</obj_property>
    </wvobject>
 </wave_config>
