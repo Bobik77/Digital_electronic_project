@@ -15,11 +15,11 @@ Více viz. [HCSRO4_datasheet](HCSRO4_datasheet.pdf)
 D = Pulsewidth / 58     ...[cm,us]
 ````
 
-![osc_principe](Oscilograms/osc_principe.png)
+![osc_principe](img/Oscilograms/osc_principe.png)
 
 ## Chybový stav:
 Pokud nedojde k návratu echolokačního signálu zpátky k senzoru, nebo pokud je senzor zanesený a nefunkční, trvá ECHO signál cca 195ms. Bylo by vhodné tento stav detekovat jako poruchový. Pokud tedy `Pulsewidth > 190ms`, bude tento stav vyhodnocen jako porucha/odstavení a senzor bude vyřazen z provozu => deaktivuje se.
-![Fail state](Oscilograms/osc_fault.png)
+![Fail state](img/Oscilograms/osc_fault.png)
 
 ## **Požadavky na interface:**
 
