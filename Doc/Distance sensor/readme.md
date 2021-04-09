@@ -27,3 +27,19 @@ Pokud nedojde k návratu echolokačního signálu zpátky k senzoru, nebo pokud 
 * Snímání s přesností na 1cm (tj. 58us)
 * Kontrola `ECHO = LOW` před dalším triggerem
 * Detekce nefunkčnosti (`Pulsewidth > 190ms`)
+* Detekce odpojení
+## Návrh:
+**Časování měření**
+Po vytvoření `Trigger` pulzu se vyčka na Echo signal a začne čítání čítačem. Po ukončení `Echo` signálu se přečte daná hodnota a pošle se na výstup do řídící logiky *(8b)*
+
+add1. pro vytvoření dostatečně dlouhého `Trigger` signalu se muže užit jeden a ten stejný časovač.
+add2. i pro kontrolu, ošetření poruchy či odpojení, se použije ten stejný čítač. Na konci každého stavu se vyresetuje.
+
+## Stavy:
+* Při resetu se nastaví první stav a vynuluje se čítač
+1.  Nastavení `Trigger = HIGH`, začne se čítat
+2.  Po dočítání 20us se nastaví `Trigger = LOW`, resetuje se čítač
+3.  Čeká se na `Echo = HIGH`, při uplynutí více než 20ms se bude stav detekovat jako odpojení. V opačném případě se resetuje čítač a pokračuje se na další stav
+4. Čeká se na `Echo = LOW`, při uplynutí více než 190ms se bude stav detekovat jako  příliž vzdálená překážka.
+5.Hodnota z čítače se přepočítá a zapíše na výstup, Čítač se resetuje
+6. Po uplynutí určité doby se započne děj znovu

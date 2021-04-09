@@ -1,0 +1,20 @@
+{
+  signal:
+  [
+    ['SENSOR',
+      {name: 'Trig', 				wave: '010.......10'},
+      {name: 'Echo', 				wave: '0...1...0...'},
+    ],
+    ['INT. signals	',
+     {name: 'STATE', 	wave: '252.3...2.52', data: ["idle", "trig.", "wait", "counting","idle", "trig.", "wait"]},
+     { name: "clk", wave: 'P...........'},
+     { name: "counter", wave: '222222222222', data: ["x","0","0","0","0","1","2","3","3","3","0","0"]},
+
+    ],
+ 
+  ],
+  head:
+  {
+
+  },
+}
