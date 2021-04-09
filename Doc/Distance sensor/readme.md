@@ -43,3 +43,12 @@ add2. i pro kontrolu, ošetření poruchy či odpojení, se použije ten stejný
 4. Čeká se na `Echo = LOW`, při uplynutí více než 190ms se bude stav detekovat jako  příliž vzdálená překážka.
 5.Hodnota z čítače se přepočítá a zapíše na výstup, Čítač se resetuje
 6. Po uplynutí určité doby se započne děj znovu
+## Notes
+`10.4.` Podařilo se zprovoznit kostru programu. Nefunkční podmínky ošetření stavu rozsahu. Objevují se problémy s časováním, nevím proč. Fungují obě detekce chyb. Při druhé je akorat stavova hlaška `0000_0000`  přepsana ihned zpatky starou hodnotou TODO. Ve výpočtu ošetřit poslední tik.. nebo přednastiavit counter do 1čky místo do nuly.. aby přesně seděl počet načýtaných tiků. Testbench je praven pro další použití
+
+## TODO
+* Aserty v tb
+* vyřešit ošetření rozsahu
+* vyřešit chybové hlášky
+* doladit problémy s časováním
+* finalni simulace na tb
