@@ -8,18 +8,18 @@
 
 Na pin `TRIGER` se přivede kladná úroveň minimální délky 10us. Po cca 0,8ms se pin `ECHO` překlopí do kladné úrovně po čas přímo-úměrný vzdálenosti (Viz oscilogram). Další Trigger by měl příjít až po překlopení Echa zpět na LOW. 
 
-Více viz. [HCSRO4_datasheet](HCSRO4_datasheet.pdf)
+Více viz. [HCSR04_datasheet](HCSR04_datasheet.pdf)
 
 **Vzorec výpočtu vzdálenosti:**
 ```
 D = Pulsewidth / 58     ...[cm,us]
 ````
 
-![osc_principe](img/Oscilograms/osc_principe.png)
+![osc_principe](Img/Oscilograms/osc_principe.png)
 
 ## Chybový stav:
 Pokud nedojde k návratu echolokačního signálu zpátky k senzoru, nebo pokud je senzor zanesený a nefunkční, trvá ECHO signál cca 195ms. Bylo by vhodné tento stav detekovat jako poruchový. Pokud tedy `Pulsewidth > 190ms`, bude tento stav vyhodnocen jako porucha/odstavení a senzor bude vyřazen z provozu => deaktivuje se.
-![Fail state](img/Oscilograms/osc_fault.png)
+![Fail state](Img/Oscilograms/osc_fault.png)
 
 ## **Požadavky na interface:**
 
