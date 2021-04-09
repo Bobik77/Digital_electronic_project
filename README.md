@@ -8,7 +8,7 @@ Vala David  `ID: xxxxxxx`
 
 Vaněk Pavel  `ID: 221072`
 
-Varmužová Zdeňka `ID: xxxxxxx`
+Varmužová Zdeňka `ID: 219104`
 
 Zbořil Dominik `ID: xxxxxxx`
 
@@ -30,7 +30,7 @@ Do 16.4. mějme hotové source kódy. Během víkendu to dáme dohromady a zkus�
 * může se měnit i kmitočet 
 
 ## Zdeni - Led signalizace
-* 3x **RGB LED** ,každá pro jeden směr - lze řešit separátně, takže stačí napsat jeden modul a zkopírovat.
+* 3x4 **RGB LED** ,každé 4 pro jeden směr - lze řešit separátně, takže stačí napsat jeden modul a zkopírovat.
 * Vstup z řízení `3b`. 
 * `000` odpovídá stavu **vypnuto**
 * `001` až `111` odpovídá dalekému stavu až blízkému stavu
