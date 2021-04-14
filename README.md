@@ -10,7 +10,7 @@ Vaněk Pavel  `ID: 221072`
 
 Varmužová Zdeňka `ID: 219104`
 
-Zbořil Dominik `ID: xxxxxxx`
+Zbořil Dominik `ID: 221074`
 
 [Project folder link](https://github.com/Bobik77/Digital_electronic_project)
 
