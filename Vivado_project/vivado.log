@@ -2,22 +2,60 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Wed Apr 21 20:21:08 2021
-# Process ID: 8976
-# Current directory: C:/Users/varmu/Documents/DE1_projekt/Digital_electronic_project/Vivado_project
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent23196 C:\Users\varmu\Documents\DE1_projekt\Digital_electronic_project\Vivado_project\DE1_project.xpr
-# Log file: C:/Users/varmu/Documents/DE1_projekt/Digital_electronic_project/Vivado_project/vivado.log
-# Journal file: C:/Users/varmu/Documents/DE1_projekt/Digital_electronic_project/Vivado_project\vivado.jou
+# Start of session at: Sat Apr 24 16:33:50 2021
+# Process ID: 12576
+# Current directory: C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6948 C:\Users\samue\Documents\GitHub\Digital_electronic_project\Vivado_project\DE1_project.xpr
+# Log file: C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/vivado.log
+# Journal file: C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project\vivado.jou
 #-----------------------------------------------------------
 start_gui
-open_project C:/Users/varmu/Documents/DE1_projekt/Digital_electronic_project/Vivado_project/DE1_project.xpr
-INFO: [Project 1-313] Project file moved from 'C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project' since last save.
-WARNING: [filemgmt 56-2] Default IP Output Path : Could not find the directory 'C:/Users/varmu/Documents/DE1_projekt/Digital_electronic_project/Vivado_project/DE1_project.gen/sources_1', nor could it be found using path 'C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.gen/sources_1'.
+open_project C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.xpr
+WARNING: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.gen/sources_1'.
 Scanning sources...
 Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
 update_compile_order -fileset sources_1
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+close [ open C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/new/sound_logic.vhd w ]
+add_files C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/new/sound_logic.vhd
+update_compile_order -fileset sources_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sim_1/new/tb_sound_logic.vhd w ]
+add_files -fileset sim_1 C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sim_1/new/tb_sound_logic.vhd
+update_compile_order -fileset sim_1
 exit
-INFO: [Common 17-206] Exiting Vivado at Wed Apr 21 20:23:36 2021...
+INFO: [Common 17-206] Exiting Vivado at Sat Apr 24 16:38:53 2021...
