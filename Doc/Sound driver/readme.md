@@ -19,6 +19,6 @@ Převod do unsigned integeru byl proveden za pomocí [skriptu v matlabu](waw2arr
 * Velikost souboru 8kiB
 
 ### Simulace vyčítání z paměti:
-![sim1](img/simulations/memory_test.png)
+![sim1](img/simulations/Memory_test.png)
 ### Detail vyčítání z paměti:
-![sim1](img/simulations/memory_test_detail.png)
+![sim2](img/simulations/Memory_test_detail.png)
