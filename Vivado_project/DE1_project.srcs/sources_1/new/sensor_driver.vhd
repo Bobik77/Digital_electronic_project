@@ -43,10 +43,10 @@ end sensor_driver;
 architecture Behavioral of sensor_driver is
     -- define FSM states
     type t_state is (idle,
-                     trig,
-                     tarry,
-                     counting,
-                     fault);
+                   trig,
+                   tarry,
+                   counting,
+                   fault);
     signal s_state : t_state := idle; -- define actual state variable 
     signal s_counter : integer := 980000; --preset for shorten first interval
     signal s_distance : integer := 0; -- int for calculating distance
@@ -67,14 +67,16 @@ begin
     begin
         if rising_edge(clk) then
             if (rst = '1') then
-                s_counter <= 0; --reset counter
-                s_state <= idle; --set first FSM state
+                s_counter <= 0;
+                s_state <= idle;
                 trigger_o <= '0'; 
             end if; -- Reset
             
-            -- Every clk tick rutines:
+            -- Every clk tickrutines:
             -- increment counter every clk tick
             s_counter <= s_counter + 1;
+            -- actualise output vector
+            distance_o <= std_logic_vector(to_unsigned(s_distance, 8));
             
             case s_state is
                when idle =>
@@ -109,8 +111,8 @@ begin
                when counting =>
                -- wait for fall of echo pulse and count time
                     if (echo_i = '0') then
-                        -- compute distance (in cm)
-                        s_distance <= (s_counter+1)/5800;  
+                        -- compute distance (in cm), one tick correction 
+                        s_distance <= s_counter/5800;  
                         -- range threatment
                         if (s_distance > 255) then s_distance <= 255; end if;  -- Max of range
                         if (s_distance < 1)   then s_distance <= 1;   end if;  -- Min of range  
@@ -118,16 +120,14 @@ begin
                         -- TODO threatments are not funstion
                         s_counter <= 0;   -- reset counter
                         s_state <= idle;  -- change state
-                        -- output assigment
-                        distance_o <= std_logic_vector(to_unsigned(s_distance, 8));
                     --  too far obstacle if echo pulse is too long
                     elsif (s_counter >= c_max_echo_time) then
                          distance_o <= c_out_msg_too_far; -- set special event message
-                         s_state <= fault;
+                        s_state <= fault;
                          s_counter <= 0;   -- reset counter
                     end if;
                     
-               when others =>  --in case of fault
+               when fault =>
                -- do this case in the case of too long echo pulse,
                -- or if echo pulse will not appear
                -- could be used for generating fault signal if needed
