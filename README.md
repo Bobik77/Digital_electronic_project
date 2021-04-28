@@ -58,6 +58,25 @@ Do 16.4. mějme hotové source kódy. Během víkendu to dáme dohromady a zkus�
 * ...protože se zatím neozval.
 * Pro mě preso bez mlíka a cukru...díky :)
 
+## 22.duben.
+Další rozvrh práce na další dva týdny
+
+**TODO list:**
+* Top architektura + testbench + celková simulace `PAVEL/SAM` (až po PWM)
+* Dokumentace (celková) `ZDENI`
+    * Video (5min)
+    * Git
+    * Projít kódy (komenty)
+* PWM driver `SAM`
+* LUT (look up table -> memory module) `PAVEL`
+* HW `DOMINIK`
+    * schemata
+    * PCB
+    * (hodí se i 3D model ;) )
+
+**Všichni:**
+* Letmá dokumentace modulů (vstupy výstupy, simulace...)
+
 # Notes
 *Sem pište obecné připomínky, myšlenky, o kterých chcete informovat ostatní. Pro zbytek si založte ve složce dokumentace `Doc` vlastní podsložku která se bude vztahovat k dokumantaci vašeho bloku systému*
 
