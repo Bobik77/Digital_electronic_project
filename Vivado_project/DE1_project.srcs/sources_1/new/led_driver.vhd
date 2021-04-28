@@ -66,9 +66,8 @@ architecture Behavioral of led_driver is
     signal s_stateM : t_stateM;
     signal s_stateR : t_stateR;
     
-    signal s_cnt1    : integer;      -- ??? time counter (for each direction separately)
-    signal s_cnt2    : integer;
-    signal s_cnt3    : integer;
+    signal s_blink_state : std_logic; 
+    signal s_cnt    : integer;      -- time counter for blinking
     
     -- values for local counter
     constant c_blink_time : integer := 20000000; -- (200 ms) - time for turn on/off diode
@@ -148,6 +147,18 @@ architecture Behavioral of led_driver is
         end case;                               
     end process p_R_led;
     
+    p_blink : process(clk) -- generator
+    begin
+        if rising_edge(clk) then
+            s_cnt <= s_cnt + 1; -- counter actualise
+
+            if (s_cnt >= c_blink_time) then -- counter owerflow
+                s_blink_state <= not s_blink_state; -- toogle blink
+                s_cnt <= c_zero; -- reset timer
+            end if; -- conuter set
+        end if;
+    end process p_blink;
+    
     p_output_L : process(s_stateL, clk)
     begin
         case s_stateL is
@@ -183,24 +194,18 @@ architecture Behavioral of led_driver is
                 
                 -- L_HIGH2          
             when others =>          -- red diode flashes
-                if rising_edge(clk) then
-                    if (s_cnt1 < c_blink_time) then
-                        LED_L0_o <= "100";      -- all diodes red
-                        LED_L1_o <= "100";
-                        LED_L2_o <= "100";
-                        LED_L3_o <= "100";
-                        
-                        s_cnt1 <= s_cnt1 + 1;
-                    else 
-                        LED_L0_o <= "000";      -- all diodes off
-                        LED_L1_o <= "000";
-                        LED_L2_o <= "000";
-                        LED_L3_o <= "000";
-                        
-                        s_cnt1 <= c_zero;
-                    end if;
-                end if;
-                                                                  
+                if (s_blink_state = '1') then
+                    LED_L0_o <= "100";      -- all diodes red
+                    LED_L1_o <= "100";
+                    LED_L2_o <= "100";
+                    LED_L3_o <= "100";
+                    
+                else    
+                    LED_L0_o <= "000";      -- all diodes off
+                    LED_L1_o <= "000";
+                    LED_L2_o <= "000";
+                    LED_L3_o <= "000";
+                end if;                                  
         end case;
     end process p_output_L;
     
@@ -239,24 +244,18 @@ architecture Behavioral of led_driver is
                 
                 -- M_HIGH2          
             when others =>          -- red diode flashes
-                if rising_edge(clk) then
-                    if (s_cnt2 < c_blink_time) then
-                        LED_M0_o <= "100";      -- all diodes red
-                        LED_M1_o <= "100";
-                        LED_M2_o <= "100";
-                        LED_M3_o <= "100";
-                        
-                        s_cnt2 <= s_cnt2 + 1;
-                    else 
-                        LED_M0_o <= "000";      -- all diodes off
-                        LED_M1_o <= "000";
-                        LED_M2_o <= "000";
-                        LED_M3_o <= "000";
-                        
-                        s_cnt2 <= c_zero;
-                    end if;
-                end if;
-                                                                  
+                if (s_blink_state = '1') then
+                    LED_L0_o <= "100";      -- all diodes red
+                    LED_L1_o <= "100";
+                    LED_L2_o <= "100";
+                    LED_L3_o <= "100";
+                    
+                else    
+                    LED_L0_o <= "000";      -- all diodes off
+                    LED_L1_o <= "000";
+                    LED_L2_o <= "000";
+                    LED_L3_o <= "000";
+                end if;                                         
         end case;
     end process p_output_M;
     
@@ -295,24 +294,18 @@ architecture Behavioral of led_driver is
                 
                 -- R_HIGH2          
             when others =>          -- red diode flashes
-                if rising_edge(clk) then
-                    if (s_cnt3 < c_blink_time) then
-                        LED_R0_o <= "100";      -- all diodes red
-                        LED_R1_o <= "100";
-                        LED_R2_o <= "100";
-                        LED_R3_o <= "100";
-                        
-                        s_cnt3 <= s_cnt3 + 1;
-                    else 
-                        LED_R0_o <= "000";      -- all diodes off
-                        LED_R1_o <= "000";
-                        LED_R2_o <= "000";
-                        LED_R3_o <= "000";
-                        
-                        s_cnt3 <= c_zero;
-                    end if;
-                end if;
-                                                                  
+                if (s_blink_state = '1') then
+                    LED_L0_o <= "100";      -- all diodes red
+                    LED_L1_o <= "100";
+                    LED_L2_o <= "100";
+                    LED_L3_o <= "100";
+                    
+                else    
+                    LED_L0_o <= "000";      -- all diodes off
+                    LED_L1_o <= "000";
+                    LED_L2_o <= "000";
+                    LED_L3_o <= "000";
+                end if;                                  
         end case;
     end process p_output_R;
 
