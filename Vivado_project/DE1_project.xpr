@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="54" Path="C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.xpr">
+<Project Version="7" Minor="54" Path="C:/Users/varmu/Documents/DE1_projekt/Digital_electronic_project/Vivado_project/DE1_project.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="5b13ab9846024f039042b7071c5528e5"/>
@@ -131,6 +131,13 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sim_1/new/tb_gen.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sim_1/new/tb_led_driver.vhd">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>

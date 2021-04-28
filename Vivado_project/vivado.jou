@@ -11,3 +11,8 @@
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/varmu/Documents/DE1_projekt/Digital_electronic_project/Vivado_project/DE1_project.xpr
+update_compile_order -fileset sources_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/Users/varmu/Documents/DE1_projekt/Digital_electronic_project/Vivado_project/DE1_project.srcs/sim_1/new/tb_led_driver.vhd w ]
+add_files -fileset sim_1 C:/Users/varmu/Documents/DE1_projekt/Digital_electronic_project/Vivado_project/DE1_project.srcs/sim_1/new/tb_led_driver.vhd
+update_compile_order -fileset sim_1
