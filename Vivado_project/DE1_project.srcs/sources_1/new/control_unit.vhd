@@ -1,4 +1,3 @@
-```VHDL
 ----------------------------------------------------------------------------------
 -- Company: 
 -- Engineer: 
@@ -47,10 +46,10 @@ architecture Behavioral of control_unit is
     signal inter_sound  : std_logic_vector(8-1 downto 0); -- The lowest value
     
     -- Constants
-    constant c_ZERO       : unsigned(8 - 1 downto 0) := b"0_0000"; -- zero , no used
+    constant c_ZERO       : unsigned(8 - 1 downto 0) := b"0000_0000"; -- zero , no used
     
-begin   
-    -- Select the lowest value 
+begin  
+    -- Select the lowest (nearest) value 
     p_select_input : process (left_i, mid_i, right_i)
     begin
         if (left_i < mid_i) and (left_i < right_i)  then 
@@ -73,21 +72,21 @@ begin
     -- Sound code  
      p_sound : process(inter_sound)
      begin
-        if (inter_sound > b"0000_0001")    and (inter_sound < b"0001_1101") then -- Option 1 (1-29cm)
+        if (inter_sound >= b"0000_0001")    and (inter_sound <= b"0001_1101") then -- Option 1 (1-29cm)
             sound_o <= "001";
-        elsif (inter_sound > b"0001_1110") and (inter_sound < b"0011_1011") then -- Option 2 (30-59cm)
+        elsif (inter_sound >= b"0001_1110") and (inter_sound <= b"0011_1011") then -- Option 2 (30-59cm)
             sound_o <= "010";
-        elsif (inter_sound > b"0011_1100") and (inter_sound < b"0101_1001") then -- Option 3 (60-89cm)
+        elsif (inter_sound >= b"0011_1100") and (inter_sound <= b"0101_1001") then -- Option 3 (60-89cm)
             sound_o <= "011";
-        elsif (inter_sound > b"0101_1010") and (inter_sound < b"0111_0111") then -- Option 4 (90-119cm)
+        elsif (inter_sound >= b"0101_1010") and (inter_sound <= b"0111_0111") then -- Option 4 (90-119cm)
             sound_o <= "100";
-        elsif (inter_sound > b"0111_1000") and (inter_sound < b"1001_0101") then -- Option 5 (120-149cm)
+        elsif (inter_sound >= b"0111_1000") and (inter_sound <= b"1001_0101") then -- Option 5 (120-149cm)
             sound_o <= "101";
-        elsif (inter_sound > b"1001_0110") and (inter_sound < b"1011_0011") then -- Option 6 (150-179cm)
+        elsif (inter_sound >= b"1001_0110") and (inter_sound <= b"1011_0011") then -- Option 6 (150-179cm)
             sound_o <= "110";
-        elsif (inter_sound > b"1011_0100") and (inter_sound < b"1100_1000") then -- Option 7 (180-200cm)
+        elsif (inter_sound >= b"1011_0100") and (inter_sound <= b"1100_1000") then -- Option 7 (180-200cm)
             sound_o <= "111";
-        elsif (inter_sound > b"0000_0000") or  (inter_sound < b"1111_1111") then -- Option 8 (Disabled)
+        elsif (inter_sound = b"0000_0000") or  (inter_sound = b"1111_1111") then -- Option 8 (Disabled)
             sound_o <= "000";       
         end if;      
               
@@ -116,21 +115,21 @@ begin
      -- Code for led_L_o  
      p_led_L : process(left_i)
      begin   
-        if (left_i > b"0000_0001")    and (left_i < b"0001_1101") then -- Option 1 (1-29cm)
+        if (left_i >= b"0000_0001")    and (left_i <= b"0001_1101") then -- Option 1 (1-29cm)
             led_L_o <= "001";
-        elsif (left_i > b"0001_1110") and (left_i < b"0011_1011") then -- Option 2 (30-59cm)
+        elsif (left_i >= b"0001_1110") and (left_i <= b"0011_1011") then -- Option 2 (30-59cm)
             led_L_o <= "010";
-        elsif (left_i > b"0011_1100") and (left_i < b"0101_1001") then -- Option 3 (60-89cm)
+        elsif (left_i >= b"0011_1100") and (left_i <= b"0101_1001") then -- Option 3 (60-89cm)
             led_L_o <= "011";
-        elsif (left_i > b"0101_1010") and (left_i < b"0111_0111") then -- Option 4 (90-119cm)
+        elsif (left_i >= b"0101_1010") and (left_i <= b"0111_0111") then -- Option 4 (90-119cm)
             led_L_o <= "100";
-        elsif (left_i > b"0111_1000") and (left_i < b"1001_0101") then -- Option 5 (120-149cm)
+        elsif (left_i >=  b"0111_1000") and (left_i <= b"1001_0101") then -- Option 5 (120-149cm)
             led_L_o <= "101";
-        elsif (left_i > b"1001_0110") and (left_i < b"1011_0011") then -- Option 6 (150-179cm)
+        elsif (left_i >= b"1001_0110") and (left_i <= b"1011_0011") then -- Option 6 (150-179cm)
             led_L_o <= "110";
-        elsif (left_i > b"1011_0100") and (left_i < b"1100_1000") then -- Option 7 (180-200cm)
+        elsif (left_i >= b"1011_0100") and (left_i <= b"1100_1000") then -- Option 7 (180-200cm)
             led_L_o <= "111";
-        elsif (left_i > b"0000_0000") or  (left_i < b"1111_1111") then -- Option 8 (Disabled)
+        elsif (left_i = b"0000_0000") or  (left_i = b"1111_1111") then -- Option 8 (Disabled)
             led_L_o <= "000";       
         end if;
         
@@ -158,21 +157,21 @@ begin
      -- Code for led_M_o    
      p_led_M : process(mid_i)
      begin   
-        if (mid_i > b"0000_0001")    and (mid_i < b"0001_1101") then -- Option 1 (1-29cm)
+        if (mid_i >= b"0000_0001")    and (mid_i <= b"0001_1101") then -- Option 1 (1-29cm)
             led_M_o <= "001";
-        elsif (mid_i > b"0001_1110") and (mid_i < b"0011_1011") then -- Option 2 (30-59cm)
+        elsif (mid_i >= b"0001_1110") and (mid_i <= b"0011_1011") then -- Option 2 (30-59cm)
             led_M_o <= "010";
-        elsif (mid_i > b"0011_1100") and (mid_i < b"0101_1001") then -- Option 3 (60-89cm)
+        elsif (mid_i >= b"0011_1100") and (mid_i <= b"0101_1001") then -- Option 3 (60-89cm)
             led_M_o <= "011";
-        elsif (mid_i > b"0101_1010") and (mid_i < b"0111_0111") then -- Option 4 (90-119cm)
+        elsif (mid_i >= b"0101_1010") and (mid_i <= b"0111_0111") then -- Option 4 (90-119cm)
             led_M_o <= "100";
-        elsif (mid_i > b"0111_1000") and (mid_i < b"1001_0101") then -- Option 5 (120-149cm)
+        elsif (mid_i >= b"0111_1000") and (mid_i <= b"1001_0101") then -- Option 5 (120-149cm)
             led_M_o <= "101";
-        elsif (mid_i > b"1001_0110") and (mid_i < b"1011_0011") then -- Option 6 (150-179cm)
+        elsif (mid_i >= b"1001_0110") and (mid_i <= b"1011_0011") then -- Option 6 (150-179cm)
             led_M_o <= "110";
-        elsif (mid_i > b"1011_0100") and (mid_i < b"1100_1000") then -- Option 7 (180-200cm)
+        elsif (mid_i >= b"1011_0100") and (mid_i <= b"1100_1000") then -- Option 7 (180-200cm)
             led_M_o <= "111";
-        elsif (mid_i > b"0000_0000") or  (mid_i < b"1111_1111") then -- Option 8 (Disabled)
+        elsif (mid_i = b"0000_0000") or  (mid_i = b"1111_1111") then -- Option 8 (Disabled)
             led_M_o <= "000";       
         end if;
      end process p_led_M;
@@ -180,24 +179,24 @@ begin
      -- Code for led_R_o  
      p_led_R : process(right_i)
      begin   
-        if (right_i > b"0000_0001")    and (right_i < b"0001_1101") then -- Option 1 (1-29cm)
+        if (right_i >= b"0000_0001")    and (right_i <= b"0001_1101") then -- Option 1 (1-29cm)
             led_R_o <= "001";
-        elsif (right_i > b"0001_1110") and (right_i < b"0011_1011") then -- Option 2 (30-59cm)
+        elsif (right_i >= b"0001_1110") and (right_i <= b"0011_1011") then -- Option 2 (30-59cm)
             led_R_o <= "010";
-        elsif (right_i > b"0011_1100") and (right_i < b"0101_1001") then -- Option 3 (60-89cm)
+        elsif (right_i >= b"0011_1100") and (right_i <= b"0101_1001") then -- Option 3 (60-89cm)
             led_R_o <= "011";
-        elsif (right_i > b"0101_1010") and (right_i < b"0111_0111") then -- Option 4 (90-119cm)
+        elsif (right_i >= b"0101_1010") and (right_i <= b"0111_0111") then -- Option 4 (90-119cm)
             led_R_o <= "100";
-        elsif (right_i > b"0111_1000") and (right_i < b"1001_0101") then -- Option 5 (120-149cm)
+        elsif (right_i >= b"0111_1000") and (right_i <= b"1001_0101") then -- Option 5 (120-149cm)
             led_R_o <= "101";
-        elsif (right_i > b"1001_0110") and (right_i < b"1011_0011") then -- Option 6 (150-179cm)
+        elsif (right_i >= b"1001_0110") and (right_i <= b"1011_0011") then -- Option 6 (150-179cm)
             led_R_o <= "110";
-        elsif (right_i > b"1011_0100") and (right_i < b"1100_1000") then -- Option 7 (180-200cm)
+        elsif (right_i >= b"1011_0100") and (right_i <= b"1100_1000") then -- Option 7 (180-200cm)
             led_R_o <= "111";
-        elsif (right_i > b"0000_0000") or  (right_i < b"1111_1111") then -- Option 8 (Disabled)
+        elsif (right_i = b"0000_0000") or  (right_i = b"1111_1111") then -- Option 8 (Disabled)
             led_R_o <= "000";       
         end if;
      end process p_led_R;
 end Behavioral;
 
-```
+
