@@ -33,11 +33,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity led_driver is
     Port ( 
-        clk     : in std_logic;     -- 100 MHz
-        reset   : in std_logic;
-        state_L : in std_logic_vector(3 - 1 downto 0);  -- state of left sensor, 3 bits
-        state_M : in std_logic_vector(3 - 1 downto 0);  -- state of middle sensor, 3 bits
-        state_R : in std_logic_vector(3 - 1 downto 0);  -- state of right sensor, 3 bits
+        clk       : in std_logic;     -- 100 MHz
+        reset     : in std_logic;
+        state_L_i : in std_logic_vector(3 - 1 downto 0);  -- state of left sensor, 3 bits
+        state_M_i : in std_logic_vector(3 - 1 downto 0);  -- state of middle sensor, 3 bits
+        state_R_i : in std_logic_vector(3 - 1 downto 0);  -- state of right sensor, 3 bits
         
         LED_L0_o : out std_logic_vector(3 - 1 downto 0); -- output color (RGB) of left leds
         LED_L1_o : out std_logic_vector(3 - 1 downto 0);
@@ -71,19 +71,19 @@ architecture Behavioral of led_driver is
     signal s_cnt    : integer;      -- time counter for blinking
     
     -- values for local counter
-    -- constant c_blink_time : integer := 20; -- for simulation needs
-    constant c_blink_time : integer := 20000000; -- (200 ms) - time for turn on/off diode
-    constant c_zero       : integer := 0;        -- zero
+    -- constant c_BLINK_TIME : integer := 20; -- for simulation needs
+    constant c_BLINK_TIME : integer := 20000000; -- (200 ms) - time for turn on/off diode
+    constant c_ZERO       : integer := 0;        -- zero
 
     begin
     
     
-    p_L_led : process(state_L,reset)  -- assignment of 5 levels due to input signal - LEFT sensor
+    p_L_led : process(state_L_i,reset)  -- assignment of 5 levels due to input signal - LEFT sensor
     begin
         if (reset = '1') then
             s_stateL <= L_LOW0;
         else
-            case state_L is
+            case state_L_i is
                 when "000" =>
                     s_stateL <= L_LOW0;
                 when "001" =>
@@ -105,12 +105,12 @@ architecture Behavioral of led_driver is
             
     end process p_L_led;
     
-    p_M_led : process(state_M,reset)  -- assignment of 5 levels due to input signal - MIDDLE sensor
+    p_M_led : process(state_M_i,reset)  -- assignment of 5 levels due to input signal - MIDDLE sensor
     begin
         if (reset = '1') then
             s_stateM <= M_LOW0;
         else
-            case state_M is
+            case state_M_i is
                 when "000" =>
                     s_stateM <= M_LOW0;
                 when "001" =>
@@ -132,12 +132,12 @@ architecture Behavioral of led_driver is
                            
     end process p_M_led;
     
-    p_R_led : process(state_R,reset)  -- assignment of 5 levels due to input signal - RIGHT sensor
+    p_R_led : process(state_R_i,reset)  -- assignment of 5 levels due to input signal - RIGHT sensor
     begin
         if (reset = '1') then
             s_stateR <= R_LOW0;
         else
-            case state_R is
+            case state_R_i is
                 when "000" =>
                     s_stateR <= R_LOW0;
                 when "001" =>
@@ -162,15 +162,15 @@ architecture Behavioral of led_driver is
     p_blink : process(clk) -- generator
     begin
         if (reset = '1') then 
-            s_cnt <= c_zero; -- counter set
+            s_cnt <= c_ZERO; -- counter set
             s_blink_state <= '0'; -- leds off
         else
             if rising_edge(clk) then
                 s_cnt <= s_cnt + 1; -- counter actualise
     
-                if (s_cnt >= c_blink_time) then -- counter owerflow
+                if (s_cnt >= c_BLINK_TIME) then -- counter owerflow
                     s_blink_state <= not s_blink_state; -- toogle blink
-                    s_cnt <= c_zero; -- reset timer
+                    s_cnt <= c_ZERO; -- reset timer
                 end if; -- conuter set
             end if;
         end if;
@@ -276,7 +276,7 @@ architecture Behavioral of led_driver is
                 end if;                                         
         end case;
     end process p_output_M;
-    
+
     p_output_R : process(s_stateR, clk)
     begin
         case s_stateR is

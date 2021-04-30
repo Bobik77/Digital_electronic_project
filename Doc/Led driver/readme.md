@@ -32,4 +32,11 @@ všechny LED diody blikají červeně
 ### Znázornění stavů - výstup LED
 ![states](images/LEDs_img.png)
 
+## Simulace
+![Sim1](images/Sim1.png)
+![Sim2](images/Sim2.png)
+![Sim3](images/Sim3.png)
+### Detail výstupů
+![states](images/Sim_detail.png)
+
 

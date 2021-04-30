@@ -134,9 +134,9 @@ begin
                  clk    => CLK,
                  reset    => RST,
                  -- state inputs
-                 state_L => s_led_L_state, -- left  side
-                 state_M => s_led_M_state, -- middle
-                 state_R => s_led_R_state, -- right side
+                 state_L_i => s_led_L_state, -- left  side
+                 state_M_i => s_led_M_state, -- middle
+                 state_R_i => s_led_R_state, -- right side
                  -- LED outputs
                  LED_L0_o(1 downto 0) => LED_L0_o, -- left side LEDs
                  LED_L1_o(1 downto 0) => LED_L1_o,
