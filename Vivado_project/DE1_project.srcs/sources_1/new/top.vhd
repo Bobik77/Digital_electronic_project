@@ -39,7 +39,7 @@ entity top is
         -- SPEAKER Wiring
         speaker_o:       out std_logic;  -- speaker pwm output
         
-        -- LEDs Wiring
+        -- LEDs Wiring (RED; GREEN)
         LED_L0_o:        out std_logic_vector(1 downto 0);  -- left side LEDs
         LED_L1_o:        out std_logic_vector(1 downto 0);  
         LED_L2_o:        out std_logic_vector(1 downto 0);
@@ -158,6 +158,9 @@ begin
     ----------------------------------------------------------------------------------
     -- Instance of sound player with memory
     sound_player_0 : entity work.sound_player
+        generic map(-- global constants
+                    g_TICKS_PER_SAMPLE => 10,  --sample duration in ticks; original value = 1042
+                    g_VOLUME           => 2)   --volume adjust
         port map(-- control signals
                  clk      => CLK,
                  rst      => RST,

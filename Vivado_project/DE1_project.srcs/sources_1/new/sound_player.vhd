@@ -51,7 +51,7 @@ architecture Behavioral of sound_player is
     signal s_data_in :              unsigned (7 downto 0); -- internal signal, memorz input
 begin
     -- Sound Memory implemeentation
-    uut_sound_memoy: entity work.sound_memory
+    e_sound_memoy: entity work.sound_memory
     port map(
         clk => clk,
         address => s_address,
