@@ -75,7 +75,7 @@ begin
             LED_L0_o    => s_LED_L0,
             LED_L1_o    => s_LED_L1,
             LED_L2_o    => s_LED_L2,
-            LED_L3_o    => s_LED_L1,
+            LED_L3_o    => s_LED_L3,
                     
             LED_M0_o    => s_LED_M0,
             LED_M1_o    => s_LED_M1,
@@ -122,7 +122,7 @@ begin
         report "Stimulus process started" severity note;
         
         s_state_L <= "000"; s_state_M <= "000"; s_state_R <= "000"; 
-        wait for 100ns;
+        wait for 50ns;
         
         s_state_L <= "000";wait for 20ns;
         s_state_L <= "001";wait for 20ns;
@@ -134,13 +134,36 @@ begin
         s_state_L <= "111";wait for 80ns;
         
         s_state_L <= "000"; s_state_M <= "000"; s_state_R <= "000"; 
-        wait for 100ns;
+        wait for 50ns;
+        
+        s_state_M <= "000";wait for 20ns;
+        s_state_M <= "001";wait for 20ns;
+        s_state_M <= "010";wait for 20ns;
+        s_state_M <= "011";wait for 20ns;
+        s_state_M <= "100";wait for 20ns;
+        s_state_M <= "101";wait for 20ns;
+        s_state_M <= "110";wait for 20ns;
+        s_state_M <= "111";wait for 80ns;
+        
         s_state_L <= "001"; s_state_M <= "001"; s_state_R <= "001"; 
-        wait for 100ns;
+        wait for 20ns;
         s_state_L <= "100"; s_state_M <= "010"; s_state_R <= "011"; 
-        wait for 100ns;
+        wait for 20ns;
+        
+        s_state_R <= "000";wait for 10ns;
+        s_state_R <= "001";wait for 10ns;
+        s_state_R <= "010";wait for 10ns;
+        s_state_R <= "011";wait for 10ns;
+        s_state_R <= "100";wait for 10ns;
+        s_state_R <= "101";wait for 10ns;
+        s_state_R <= "110";wait for 10ns;
+        s_state_R <= "111";wait for 30ns;
+        
         s_state_L <= "110"; s_state_M <= "011"; s_state_R <= "010"; 
-        wait for 100ns;
+        wait for 10ns;
+        s_state_L <= "111"; s_state_M <= "111"; s_state_R <= "111"; 
+        wait for 10ns;
+        
         
         -- Report a note at the end of stimulus process
         report "Stimulus process finished" severity note;
