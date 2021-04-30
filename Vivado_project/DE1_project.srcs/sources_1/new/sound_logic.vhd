@@ -62,7 +62,7 @@ architecture Behavioral of sound_logic is
                             on_state <= not on_state;
                         end if;
                     when "011" =>
-                        if (s_cnt_local > 300) then         -- peeps 300 ms and stays quiet 300 ms
+                        if (s_cnt_local > 30000000) then         -- peeps 300 ms and stays quiet 300 ms
                             s_cnt_local <= 0;
                             if (on_state = '1') then
                                 s_cnt_local <= 0;
@@ -70,7 +70,7 @@ architecture Behavioral of sound_logic is
                             on_state <= not on_state;
                         end if;
                     when "100" =>
-                        if (s_cnt_local > 200) then         -- peeps 200 ms and stays quiet 200 ms
+                        if (s_cnt_local > 20000000) then         -- peeps 200 ms and stays quiet 200 ms
                             s_cnt_local <= 0;
                             if (on_state = '1') then
                                 s_cnt_local <= 0;
@@ -78,7 +78,7 @@ architecture Behavioral of sound_logic is
                             on_state <= not on_state;
                         end if;
                     when "101" =>
-                        if (s_cnt_local > 200) then         -- peeps 200 ms and stays quiet 200 ms
+                        if (s_cnt_local > 20000000) then         -- peeps 200 ms and stays quiet 200 ms
                             s_cnt_local <= 0;
                             if (on_state = '1') then
                                 s_cnt_local <= 0;
@@ -86,7 +86,7 @@ architecture Behavioral of sound_logic is
                             on_state <= not on_state;
                         end if;
                     when "110" =>
-                        if (s_cnt_local > 100) then         -- peeps 100 ms and stays quiet 100 ms
+                        if (s_cnt_local > 10000000) then         -- peeps 100 ms and stays quiet 100 ms
                             s_cnt_local <= 0;
                             if (on_state = '1') then
                                 s_cnt_local <= 0;

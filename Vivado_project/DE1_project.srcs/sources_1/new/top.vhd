@@ -25,7 +25,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity top is
   Port (-- Board signals
-        CLK:       in std_logic;   -- internal clock
+        CLK:             in std_logic;   -- internal clock
         RST:             in std_logic;   -- reset button
         
         -- SENSORs Wiring
