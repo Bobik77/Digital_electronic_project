@@ -3,7 +3,7 @@
 Řídící jednota získává vzdálenostní data ze `Sensor_driveru`. Jedná se o 3 signály ze tří směrů, které jsou ve formě 8bitového kódu. Signály jsou porovnány a ten který má nejnižší hodnotu představuje nejmenší vzdálenost. Poté jsou signály převedeny na 3bitové a ten který aktuálně reprezentuje nejmenší vzdálenost je odeslán do `Sound_driveru`. Zároveň jsou všechny převedené 3bitové signály zvlášť odeslány do `LED_driveru` pro 3 Led systémy.
 
 ## Převod vzdáleností
-8bitový signál přivedený na vstup řádící jednotky je podle následující tabulky převeden na 3bitový. Je-li například hodnota v rozmezí `"90–119"` cm je mu přidělena 3bitová hodnota `"100"` tedy `"4"`dekadicky.
+8bitový signál přivedený na vstup řádící jednotky je podle následující tabulky převeden na 3bitový. Je-li například hodnota v rozmezí `"90–119"` cm je mu přidělena 3bitová hodnota `"100"` tedy `"4"`dekadicky. Hodnoty `"0000_0000"` - `"1111_1111"` představují stav vypnuto. Nastává při příliš velké vzdálenosti nebo moc malé (náraz).
 ### Tabulka převodů
 | **Rozmezí BIN** | **Rozmezí DEC [Cm]** | **Výstup BIN** |
    | :-: | :-: | :-: |
