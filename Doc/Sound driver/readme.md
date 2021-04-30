@@ -75,11 +75,17 @@ Nastavenia striedy na obrázku sme dali pomocou bitových kombinácii približne
 Modul zoberie output z pwm modulu a z control unit. Jeho úlohou je vstupný signál čiastočne prerušovať, tak aby vznikalo pípanie.
 Toto robíme tak, že generujeme signál s rozdielnou frekvenciou pre jednotlivé stavy. Tam kde je tento signál rovný 0, nastáva prerušenie vstupného signálu.  
 Pri stave "000" vstupný signál je celý čas utĺmovaný a žiaden zvuk nevydáva.
+
 Pri stave "001" vstupný signál signál pípa 500ms a je ticho 500ms.
+
 Pri stave "010" a "011" vstupný signál signál pípa 300ms a je ticho 300ms.
+
 Pri stave "100" a "101" vstupný signál signál pípa 200ms a je ticho 200ms.
+
 Pri stave "110" vstupný signál signál pípa 100ms a je ticho 100ms.
+
 Pri stave "111" vstupný signál je prepúšťaný celý čas a vydáva zvuk stále.
+
 Pri ostatných inputoch utĺmovací signál mení svoju frekvenciu, pri niektorých "susedných" inputoch je frekvencia rovnaká, aby sme mali len 6 pípacích stavov.
 
 Špecifikácie:
