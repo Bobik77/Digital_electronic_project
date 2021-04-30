@@ -3,21 +3,23 @@ Obsahuje moduly:
 * sound_memory.vhd
 * sound_logic.vhd
 * pwm DAC `TODO`
-* sampler (vyčítání vzorků) `TODO`
+* sound_player.vhd
 
-# sound_memory:
-Modul obsahuje v paměti asi 0.8 sec dlouhý krátký úsek audia (mono).
+# sound_memory (součást sound_player.vhd)
+Modul obsahuje v paměti asi 0.8 sec dlouhý krátký [úsek audia](bump.wav) (mono). Tento výsek je setříhán tak, aby při přehrávání ve smyčce na sebe navazoval a v reproduktoru se tedy neozývalo nepřijemné "lupání".
 
-Převod do unsigned integeru byl proveden za pomocí [skriptu v matlabu](waw2array.m). Výsledek je uložen v [txt souboru](sound_string.txt); pro snadnější formátování po 50 samplech na řádek.
+Sestříhání a úprava vzorku audia byla provedena v programu **LogicProX**. Zvuk má royality free licenci.
+
+Převod do unsigned integeru byl proveden za pomocí [skriptu v MATLABu](waw2array.m). Výsledek je uložen v [.txt souboru](sound_string.txt); pro snadnější formátování po 50 samplech na řádek.
 
  Audio je normalizováno (pro maximální rozkmit).
 
-**Tech. specifikace:**
+**Tech. specifikace modulu:**
 * Rozlišení: 8b
-* Adresní sběrnice 12b
-* Počet vzorků: 2303
-* Vzorkovací kmitočet 96000 Hz
-* Velikost souboru 8kiB
+* Šíře adresní sběrnice 12b
+* Počet uložených vzorků: 2303
+* Vzorkovací kmitočet: 96 kHz
+* Velikost souboru: 8kiB
 
 ### Simulace vyčítání z paměti:
 ![sim1](img/simulations/Memory_test.png)
@@ -49,6 +51,7 @@ Originální hodnoty:
 * `c_sample_period` <= 1042 (96kHz při 100MHz clk)
 * `c_volume` <=  ad. libitum
 * `c_n_samples` <= 2303
+
 ![sim3](img/simulations/sound_player_test.png)
 ### Detail simulace:
 ![sim4](img/simulations/sound_player_test_detail.png)
