@@ -16,7 +16,8 @@
    | `1011_0100` - `1100_1000` | `180 - 200` | `001` |
    | `0000_0000` - `1111_1111` | `Disabled` | `000` |
 
-Obrázky simulací ukazují různé stavy, které mohu nastat a potvrzují, že na výstupu pro Sound driveru se nachází vždy ta nejnižší hodnota.
+Obrázky simulací ukazují různé stavy, které mohu nastat a potvrzují, že na výstupu pro `Sound_driveru` se nachází vždy ta nejnižší hodnota.
+Na `"s_sound_o"` pozorujeme signál který povede do `Sound_driveru`.
 ![Sim1](Img/Obr1.png)
 ![Sim2](Img/Obr2.png)
 ![Sim3](Img/Obr3.png)
