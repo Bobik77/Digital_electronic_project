@@ -55,3 +55,25 @@ Originální hodnoty:
 ![sim3](img/simulations/sound_player_test.png)
 ### Detail simulace:
 ![sim4](img/simulations/sound_player_test_detail.png)
+
+# sound_logic.vhd:
+Modul zoberie output z pwm modulu a z riadiacej logiky. Jeho úlohou je pwm signál čiastočne utlmovať podľa jeho vnútornej logiky, tak aby vznikalo pípanie.
+V prípade logického inputu "000" pwm signál je celý čas utĺmovaný a žiaden zvuk nevydáva.
+Pri logickom inpute "111" pwm signál je prepúšťaný celý a vydáva zvuk stále.
+Pri ostatných inputoch utĺmovací signál mení svoju frekvenciu, pri niektorých "susedných" inputoch je frekvencia rovnaká, aby sme mali len 6 pípacích stavov.
+
+Špecifikácie:
+* vstup 100MHz hodin `clk`
+* vstup 3b `state`
+* vstup 1b `sound_in`
+* výstup 1b `sound_out`
+
+### Simulácia pípania:
+Pre účely simulácie sme nastavili trvanie každého stavu na 1 milisekundu a frekvencie utĺmoviaceho signálu sú v jednotkách nanosekúnd (normálne stovky milisekúnd)
+
+![logic](img/simulations/sound_logic_sim.PNG)
+
+
+
+
+  
