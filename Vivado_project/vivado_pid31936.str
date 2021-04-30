@@ -2218,3 +2218,7 @@ selectCodeEditor("tb_top.vhd", 455, 51); // bP
 selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "top.vhd", 0); // m
 // Elapsed time: 144 seconds
 selectCodeEditor("top.vhd", 121, 287); // bP
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
