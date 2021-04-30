@@ -34,8 +34,8 @@ Tento modul má na starosti práci s pamětí a řízení PWM D/A převodníku. 
 Je zde vytvořen interní signál hodin `s_sample_clock`, který má periodu vzorkovacího kmitočtu (zde 96kHz). V taktu tohoto signálu dochází právě k vyčítání dat ze zvukové paměti. Po přečtení všech samplů (viz const. `c_n_samples`) se opět opakuje vyčítání od adresy **`0000_0000`**.
 
 **Specifikace:**
-* Konstanta hlasitosti `c_volume`
-* Konstanta samplovaciho kmitočtu (tiky na hlavní hodinový signál) `c_sample_period`
+* Konstanta hlasitosti `c_volume`, (nastavitelné globální proměnou `g_VOLUME`)
+* Konstanta samplovaciho kmitočtu (tiky na hlavní hodinový signál) `c_sample_period` (nastavitelné globální proměnou `g_TICKS_PER_SAMPLE`)
 * vstup 100MHz hodin `clk`
 * výstup 8b, vektor pro pwm `data_out`
 * výstup 12b, adresní sběrnice pro paměť (interni signal) `s_address`
