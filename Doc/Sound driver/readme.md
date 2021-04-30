@@ -56,14 +56,34 @@ Originální hodnoty:
 ### Detail simulace:
 ![sim4](img/simulations/sound_player_test_detail.png)
 
+# pwm.vhd:
+V tomto module sa generuje pwm signál - signál ktorý môže nadobúdať len hodnoty 1 a 0, ale zmenou striedy (duty cycle, teda pomer signálu v stave 1 a 0), jeho priemerná hodnota môže nadobúdať tvar analogového signálu.
+Modul berie 8-bitový output z modulu sound_player ako svoj input. Tento input určí veľkosť striedy v daný okamžik pre pwm signál.
+Dokopy môže byť 256 rôznych možností pre veľkosť striedy.
+
+Špecifikácie:
+* vstup 100MHz `clk`
+* vstup 8b `duty`
+* výstup 1b `output`
+
+### Simulácia pwm:
+Pre účel simulácie sme použili frekvenciu pwm signálu 400 kHz, aby sa nám zobrazilo viacero nastavení striedy.
+Nastavenia striedy na obrázku sme dali pomocou bitových kombinácii približne na hodnoty: 0%,3.5%,25%,50%,62%,75%,90%,100%
+![pwm](img/simulations/pwm_sim.PNG)
+
 # sound_logic.vhd:
-Modul zoberie output z pwm modulu a z riadiacej logiky. Jeho úlohou je pwm signál čiastočne utlmovať podľa jeho vnútornej logiky, tak aby vznikalo pípanie.
-V prípade logického inputu "000" pwm signál je celý čas utĺmovaný a žiaden zvuk nevydáva.
-Pri logickom inpute "111" pwm signál je prepúšťaný celý a vydáva zvuk stále.
+Modul zoberie output z pwm modulu a z control unit. Jeho úlohou je vstupný signál čiastočne prerušovať, tak aby vznikalo pípanie.
+Toto robíme tak, že generujeme signál s rozdielnou frekvenciou pre jednotlivé stavy. Tam kde je tento signál rovný 0, nastáva prerušenie vstupného signálu.  
+Pri stave "000" vstupný signál je celý čas utĺmovaný a žiaden zvuk nevydáva.
+Pri stave "001" vstupný signál signál pípa 500ms a je ticho 500ms.
+Pri stave "010" a "011" vstupný signál signál pípa 300ms a je ticho 300ms.
+Pri stave "100" a "101" vstupný signál signál pípa 200ms a je ticho 200ms.
+Pri stave "110" vstupný signál signál pípa 100ms a je ticho 100ms.
+Pri stave "111" vstupný signál je prepúšťaný celý čas a vydáva zvuk stále.
 Pri ostatných inputoch utĺmovací signál mení svoju frekvenciu, pri niektorých "susedných" inputoch je frekvencia rovnaká, aby sme mali len 6 pípacích stavov.
 
 Špecifikácie:
-* vstup 100MHz hodin `clk`
+* vstup 100MHz `clk`
 * vstup 3b `state`
 * vstup 1b `sound_in`
 * výstup 1b `sound_out`
@@ -72,7 +92,6 @@ Pri ostatných inputoch utĺmovací signál mení svoju frekvenciu, pri niektor�
 Pre účely simulácie sme nastavili trvanie každého stavu na 1 milisekundu a frekvencie utĺmoviaceho signálu sú v jednotkách nanosekúnd (normálne stovky milisekúnd)
 
 ![logic](img/simulations/sound_logic_sim.PNG)
-
 
 
 
