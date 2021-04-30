@@ -68,9 +68,9 @@ begin
         port map(
             clk         => s_clk,
             reset       => s_reset,
-            state_L     => s_state_L,
-            state_M     => s_state_M,
-            state_R     => s_state_R,
+            state_L_i   => s_state_L,
+            state_M_i   => s_state_M,
+            state_R_i   => s_state_R,
                     
             LED_L0_o    => s_LED_L0,
             LED_L1_o    => s_LED_L1,
@@ -125,12 +125,26 @@ begin
         wait for 50ns;
         
         s_state_L <= "000";wait for 20ns;
+        assert ((s_LED_L0 = "000") and (s_LED_L1 = "000") and (s_LED_L2 = "000") and (s_LED_L3 = "000"))
+        report "Test failed for input state_L '000'." severity error;
         s_state_L <= "001";wait for 20ns;
+        assert ((s_LED_L0 = "010") and (s_LED_L1 = "000") and (s_LED_L2 = "000") and (s_LED_L3 = "000"))
+        report "Test failed for input state_L '001'." severity error;
         s_state_L <= "010";wait for 20ns;
+        assert ((s_LED_L0 = "010") and (s_LED_L1 = "000") and (s_LED_L2 = "000") and (s_LED_L3 = "000"))
+        report "Test failed for input state_L '010'." severity error;
         s_state_L <= "011";wait for 20ns;
+        assert ((s_LED_L0 = "010") and (s_LED_L1 = "010") and (s_LED_L2 = "000") and (s_LED_L3 = "000"))
+        report "Test failed for input state_L '011'." severity error;
         s_state_L <= "100";wait for 20ns;
+        assert ((s_LED_L0 = "010") and (s_LED_L1 = "010") and (s_LED_L2 = "110") and (s_LED_L3 = "000"))
+        report "Test failed for input state_L '100'." severity error;
         s_state_L <= "101";wait for 20ns;
+        assert ((s_LED_L0 = "010") and (s_LED_L1 = "010") and (s_LED_L2 = "110") and (s_LED_L3 = "000"))
+        report "Test failed for input state_L '101'." severity error;
         s_state_L <= "110";wait for 20ns;
+        assert ((s_LED_L0 = "010") and (s_LED_L1 = "010") and (s_LED_L2 = "110") and (s_LED_L3 = "100"))
+        report "Test failed for input state_L '110'." severity error;
         s_state_L <= "111";wait for 80ns;
         
         s_state_L <= "000"; s_state_M <= "000"; s_state_R <= "000"; 

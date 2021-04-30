@@ -2,16 +2,17 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Fri Apr 30 17:55:26 2021
-# Process ID: 25380
+# Start of session at: Fri Apr 30 12:11:12 2021
+# Process ID: 9228
 # Current directory: C:/Users/varmu/Documents/DE1_project/Digital_electronic_project/Vivado_project
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12776 C:\Users\varmu\Documents\DE1_project\Digital_electronic_project\Vivado_project\DE1_project.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent21748 C:\Users\varmu\Documents\DE1_project\Digital_electronic_project\Vivado_project\DE1_project.xpr
 # Log file: C:/Users/varmu/Documents/DE1_project/Digital_electronic_project/Vivado_project/vivado.log
 # Journal file: C:/Users/varmu/Documents/DE1_project/Digital_electronic_project/Vivado_project\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/varmu/Documents/DE1_project/Digital_electronic_project/Vivado_project/DE1_project.xpr
 INFO: [Project 1-313] Project file moved from 'C:/Users/Ventus/Documents/VivadoDocs/Digital_electronic_project/Vivado_project' since last save.
+WARNING: [filemgmt 56-2] Default IP Output Path : Could not find the directory 'C:/Users/varmu/Documents/DE1_project/Digital_electronic_project/Vivado_project/DE1_project.gen/sources_1', nor could it be found using path 'C:/Users/Ventus/Documents/VivadoDocs/Digital_electronic_project/Vivado_project/DE1_project.gen/sources_1'.
 CRITICAL WARNING: [Project 1-311] Could not find the file 'C:/Users/varmu/Documents/DE1_project/Digital_electronic_project/Vivado_project/DE1_project.srcs/sim_1/new/tb_sound_memory.vhd', nor could it be found using path 'C:/Users/Ventus/Documents/VivadoDocs/Digital_electronic_project/Vivado_project/DE1_project.srcs/sim_1/new/tb_sound_memory.vhd'.
 Scanning sources...
 Finished scanning sources
@@ -20,4 +21,4 @@ INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
 update_compile_order -fileset sources_1
 exit
-INFO: [Common 17-206] Exiting Vivado at Fri Apr 30 18:05:21 2021...
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 30 12:16:31 2021...
