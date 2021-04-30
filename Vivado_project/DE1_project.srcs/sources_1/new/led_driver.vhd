@@ -34,6 +34,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity led_driver is
     Port ( 
         clk     : in std_logic;     -- 100 MHz
+        reset   : in std_logic;
         state_L : in std_logic_vector(3 - 1 downto 0);  -- state of left sensor, 3 bits
         state_M : in std_logic_vector(3 - 1 downto 0);  -- state of middle sensor, 3 bits
         state_R : in std_logic_vector(3 - 1 downto 0);  -- state of right sensor, 3 bits
@@ -75,88 +76,104 @@ architecture Behavioral of led_driver is
 
     begin
     
---    p_clk : process(clk)
---    begin
---        if rising edge(clk) then
---            s_stateL
---    end process p_clk;
     
     p_L_led : process(state_L)  -- assignment of 5 levels due to input signal - LEFT sensor
     begin
-        case state_L is
-            when "000" =>
-                s_stateL <= L_LOW0;
-            when "001" =>
-                s_stateL <= L_LOW1;
-            when "010" =>
-                s_stateL <= L_LOW1;
-            when "011" =>
-                s_stateL <= L_LOW2;
-            when "100" =>
-                s_stateL <= L_MED;
-            when "101" =>
-                s_stateL <= L_MED;
-            when "110" =>
-                s_stateL <= L_HIGH1;
-            when "111" =>
-                s_stateL <= L_HIGH2;
-        end case;                               
+        if (reset <= '1') then
+            s_stateL <= L_LOW0;
+        else
+            case state_L is
+                when "000" =>
+                    s_stateL <= L_LOW0;
+                when "001" =>
+                    s_stateL <= L_LOW1;
+                when "010" =>
+                    s_stateL <= L_LOW1;
+                when "011" =>
+                    s_stateL <= L_LOW2;
+                when "100" =>
+                    s_stateL <= L_MED;
+                when "101" =>
+                    s_stateL <= L_MED;
+                when "110" =>
+                    s_stateL <= L_HIGH1;
+                when others =>      -- "111"
+                    s_stateL <= L_HIGH2;
+            end case;                           
+        end if;
+            
     end process p_L_led;
     
     p_M_led : process(state_M)  -- assignment of 5 levels due to input signal - MIDDLE sensor
     begin
-        case state_M is
-            when "000" =>
-                s_stateM <= M_LOW0;
-            when "001" =>
-                s_stateM <= M_LOW1;
-            when "010" =>
-                s_stateM <= M_LOW1;
-            when "011" =>
-                s_stateM <= M_LOW2;
-            when "100" =>
-                s_stateM <= M_MED;
-            when "101" =>
-                s_stateM <= M_MED;
-            when "110" =>
-                s_stateM <= M_HIGH1;
-            when "111" =>
-                s_stateM <= M_HIGH2;
-        end case;                               
+        if (reset <= '1') then
+            s_stateM <= M_LOW0;
+        else
+            case state_M is
+                when "000" =>
+                    s_stateM <= M_LOW0;
+                when "001" =>
+                    s_stateM <= M_LOW1;
+                when "010" =>
+                    s_stateM <= M_LOW1;
+                when "011" =>
+                    s_stateM <= M_LOW2;
+                when "100" =>
+                    s_stateM <= M_MED;
+                when "101" =>
+                    s_stateM <= M_MED;
+                when "110" =>
+                    s_stateM <= M_HIGH1;
+                when others =>      -- "111"
+                    s_stateM <= M_HIGH2;
+            end case;            
+        end if;
+                           
     end process p_M_led;
     
     p_R_led : process(state_R)  -- assignment of 5 levels due to input signal - RIGHT sensor
     begin
-        case state_R is
-            when "000" =>
-                s_stateR <= R_LOW0;
-            when "001" =>
-                s_stateR <= R_LOW1;
-            when "010" =>
-                s_stateR <= R_LOW1;
-            when "011" =>
-                s_stateR <= R_LOW2;
-            when "100" =>
-                s_stateR <= R_MED;
-            when "101" =>
-                s_stateR <= R_MED;
-            when "110" =>
-                s_stateR <= R_HIGH1;
-            when "111" =>
-                s_stateR <= R_HIGH2;
-        end case;                               
+        if (reset <= '1') then
+            s_stateR <= R_LOW0;
+        else
+            case state_R is
+                when "000" =>
+                    s_stateR <= R_LOW0;
+                when "001" =>
+                    s_stateR <= R_LOW1;
+                when "010" =>
+                    s_stateR <= R_LOW1;
+                when "011" =>
+                    s_stateR <= R_LOW2;
+                when "100" =>
+                    s_stateR <= R_MED;
+                when "101" =>
+                    s_stateR <= R_MED;
+                when "110" =>
+                    s_stateR <= R_HIGH1;
+                when others =>      -- "111"
+                    s_stateR <= R_HIGH2;
+            end case;          
+        end if;
+                             
     end process p_R_led;
     
     p_blink : process(clk) -- generator
     begin
-        if rising_edge(clk) then
-            s_cnt <= s_cnt + 1; -- counter actualise
-
-            if (s_cnt >= c_blink_time) then -- counter owerflow
-                s_blink_state <= not s_blink_state; -- toogle blink
-                s_cnt <= c_zero; -- reset timer
-            end if; -- conuter set
+        if (reset <= '1') then 
+            s_cnt <= c_zero; -- counter set
+            s_blink_state <= '0'; -- leds off
+        else
+            if rising_edge(clk) then
+                s_cnt <= s_cnt + 1; -- counter actualise
+    
+                if (s_cnt >= c_blink_time) then -- counter owerflow
+                    s_blink_state <= not s_blink_state; -- toogle blink
+                    s_cnt <= c_zero; -- reset timer
+                end if; -- conuter set
+            end if;
         end if;
+        
     end process p_blink;
     
     p_output_L : process(s_stateL, clk)

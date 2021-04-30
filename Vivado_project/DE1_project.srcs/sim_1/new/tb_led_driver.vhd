@@ -42,6 +42,7 @@ architecture Behavioral of tb_led_driver is
         
         -- Local signals
         signal s_clk      : std_logic;
+        signal s_reset    : std_logic;
         signal s_state_L  : std_logic_vector(3 - 1 downto 0);
         signal s_state_M  : std_logic_vector(3 - 1 downto 0);
         signal s_state_R  : std_logic_vector(3 - 1 downto 0);
@@ -66,6 +67,7 @@ begin
     uut_led_driver : entity work.led_driver
         port map(
             clk         => s_clk,
+            reset       => s_reset,
             state_L     => s_state_L,
             state_M     => s_state_M,
             state_R     => s_state_R,
@@ -98,11 +100,38 @@ begin
         wait;
     end process p_clk_gen;
     
+    -- Reset generation process
+    p_reset_gen : process
+    begin
+        s_reset <= '0'; wait for 10 ns;
+        -- Reset activated
+        s_reset <= '1'; wait for 10 ns;
+        -- Reset deactivated
+        s_reset <= '0'; wait for 800 ns;
+        -- Reset activated
+        s_reset <= '1'; wait for 100 ns;
+        -- Reset deactivated
+        s_reset <= '0';
+        wait;
+    end process p_reset_gen;
+    
     -- Data generation process    
     p_stimulus : process
     begin
         -- Report a note at the begining of stimulus process
         report "Stimulus process started" severity note;
+        
+        s_state_L <= "000"; s_state_M <= "000"; s_state_R <= "000"; 
+        wait for 100ns;
+        
+        s_state_L <= "000";wait for 20ns;
+        s_state_L <= "001";wait for 20ns;
+        s_state_L <= "010";wait for 20ns;
+        s_state_L <= "011";wait for 20ns;
+        s_state_L <= "100";wait for 20ns;
+        s_state_L <= "101";wait for 20ns;
+        s_state_L <= "110";wait for 20ns;
+        s_state_L <= "111";wait for 80ns;
         
         s_state_L <= "000"; s_state_M <= "000"; s_state_R <= "000"; 
         wait for 100ns;
