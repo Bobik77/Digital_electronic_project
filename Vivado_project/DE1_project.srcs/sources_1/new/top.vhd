@@ -149,14 +149,27 @@ begin
                  LED_R0_o(1 downto 0) => LED_R0_o, -- right side LEDs
                  LED_R1_o(1 downto 0) => LED_R1_o,
                  LED_R2_o(1 downto 0) => LED_R2_o,
-                 LED_R3_o(1 downto 0) => LED_R3_o
-                 );
+                 LED_R3_o(1 downto 0) => LED_R3_o,
+                 --unused pins of RGB leds (for blue color]
+                 LED_L0_o(2) => open,
+                 LED_L1_o(2) => open,
+                 LED_L2_o(2) => open,
+                 LED_L3_o(2) => open,
+                 LED_M0_o(2) => open,
+                 LED_M1_o(2) => open,
+                 LED_M2_o(2) => open,
+                 LED_M3_o(2) => open,
+                 LED_R0_o(2) => open,
+                 LED_R1_o(2) => open,
+                 LED_R2_o(2) => open,
+                 LED_R3_o(2) => open);
                                 
     ----------------------------------------------------------------------------------
     -- SOUND ACTUATOR
     ----------------------------------------------------------------------------------
     -- Instance of sound player with memory
     sound_player_0: entity work.sound_player
+        --TODO generic( g_VOLUME := 4;);
         port map(-- control signals
                  clk      => CLK,
                  rst      => RST,

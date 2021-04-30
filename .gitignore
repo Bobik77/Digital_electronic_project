@@ -1,2 +1,12 @@
 
 Vivado_project/DE1_project.sim
+*.bxml
+*.log
+Vivado_project/DE1_project.gen/sources_1/bd/design_1/design_1.bxml
+Vivado_project/DE1_project.sim/sim_1/behav/xsim/compile.bat
+Vivado_project/DE1_project.sim/sim_1/behav/xsim/compile.log
+Vivado_project/DE1_project.sim/sim_1/behav/xsim/elaborate.log
+Vivado_project/DE1_project.sim/sim_1/behav/xsim/simulate.log
+Vivado_project/DE1_project.sim/sim_1/behav/xsim/xvhdl.log
+Vivado_project/DE1_project.sim/sim_1/behav/xsim/xvhdl.pb
+Vivado_project/DE1_project.srcs/sources_1/bd/design_1/ui/bd_1f5defd0.ui
