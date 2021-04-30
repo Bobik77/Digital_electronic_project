@@ -11,11 +11,6 @@ use ieee.numeric_std.all;   -- Package for arithmetic operations
 -- Entity declaration
 ------------------------------------------------------------------------
 entity control_unit is
-
-    -- Generic map
-    generic (
-    g_undefined     : natural := 1  -- no used
-    );
     
     --  Port map
     port (
@@ -73,42 +68,22 @@ begin
      p_sound : process(inter_sound)
      begin
         if (inter_sound >= b"0000_0001")    and (inter_sound <= b"0001_1101") then -- Option 1 (1-29cm)
-            sound_o <= "001";
+            sound_o <= "111";
         elsif (inter_sound >= b"0001_1110") and (inter_sound <= b"0011_1011") then -- Option 2 (30-59cm)
-            sound_o <= "010";
+            sound_o <= "100";
         elsif (inter_sound >= b"0011_1100") and (inter_sound <= b"0101_1001") then -- Option 3 (60-89cm)
-            sound_o <= "011";
+            sound_o <= "101";
         elsif (inter_sound >= b"0101_1010") and (inter_sound <= b"0111_0111") then -- Option 4 (90-119cm)
             sound_o <= "100";
         elsif (inter_sound >= b"0111_1000") and (inter_sound <= b"1001_0101") then -- Option 5 (120-149cm)
-            sound_o <= "101";
+            sound_o <= "011";
         elsif (inter_sound >= b"1001_0110") and (inter_sound <= b"1011_0011") then -- Option 6 (150-179cm)
-            sound_o <= "110";
+            sound_o <= "010";
         elsif (inter_sound >= b"1011_0100") and (inter_sound <= b"1100_1000") then -- Option 7 (180-200cm)
-            sound_o <= "111";
+            sound_o <= "001";
         elsif (inter_sound = b"0000_0000") or  (inter_sound = b"1111_1111") then -- Option 8 (Disabled)
             sound_o <= "000";       
-        end if;      
-              
-           -- Another design
---         case inter_sound  is
---             when b"0000_0001"  =>
---                 sound_o <= "001";     -- Option 1
---             when b"0000_0010" =>
---                 sound_o <= "010";     -- Option 2
---             when b"0000_0011" =>
---                 sound_o <= "011";     -- Option 3
---             when b"0000_0100" =>
---                 sound_o <= "100";     -- Option 4
---             when b"0000_0101" =>
---                 sound_o <= "101";     -- Option 5
---             when b"0000_0110" =>
---                 sound_o <= "110";     -- Option 6
---             when b"0000_0111" =>
---                 sound_o <= "111";     -- Option 7     
---             when others =>
---                sound_o <= "0000";     -- Option 8 (Disabled)
---         end case;
+        end if;
      end process p_sound; 
     
     
@@ -116,61 +91,41 @@ begin
      p_led_L : process(left_i)
      begin   
         if (left_i >= b"0000_0001")    and (left_i <= b"0001_1101") then -- Option 1 (1-29cm)
-            led_L_o <= "001";
+            led_L_o <= "111";
         elsif (left_i >= b"0001_1110") and (left_i <= b"0011_1011") then -- Option 2 (30-59cm)
-            led_L_o <= "010";
+            led_L_o <= "110";
         elsif (left_i >= b"0011_1100") and (left_i <= b"0101_1001") then -- Option 3 (60-89cm)
-            led_L_o <= "011";
+            led_L_o <= "101";
         elsif (left_i >= b"0101_1010") and (left_i <= b"0111_0111") then -- Option 4 (90-119cm)
             led_L_o <= "100";
         elsif (left_i >=  b"0111_1000") and (left_i <= b"1001_0101") then -- Option 5 (120-149cm)
-            led_L_o <= "101";
+            led_L_o <= "011";
         elsif (left_i >= b"1001_0110") and (left_i <= b"1011_0011") then -- Option 6 (150-179cm)
-            led_L_o <= "110";
+            led_L_o <= "010";
         elsif (left_i >= b"1011_0100") and (left_i <= b"1100_1000") then -- Option 7 (180-200cm)
-            led_L_o <= "111";
+            led_L_o <= "001";
         elsif (left_i = b"0000_0000") or  (left_i = b"1111_1111") then -- Option 8 (Disabled)
             led_L_o <= "000";       
         end if;
-        
-           -- Another design
---         case A_i is
---             when b"0000_0001" =>
---                 led_o <= "001";     -- Option 1
---             when b"0000_0010" =>
---                 led_o <= "010";     -- Option 2
---             when b"0000_0011" =>
---                 led_o <= "011";     -- Option 3
---             when b"0000_0100" =>
---                 led_o <= "100";     -- Option 4
---             when b"0000_0101" =>
---                 led_o <= "101";     -- Option 5
---             when b"0000_0110" =>
---                 led_o <= "110";     -- Option 6
---             when b"0000_0111" =>
---                 led_o <= "111";     -- Option 7
---             when others =>
---                 led_o <= "000";     -- Option 8 (Disabled)
---         end case;
-     end process p_led_L;
+ end process p_led_L;
     
      -- Code for led_M_o    
      p_led_M : process(mid_i)
      begin   
         if (mid_i >= b"0000_0001")    and (mid_i <= b"0001_1101") then -- Option 1 (1-29cm)
-            led_M_o <= "001";
+            led_M_o <= "111";
         elsif (mid_i >= b"0001_1110") and (mid_i <= b"0011_1011") then -- Option 2 (30-59cm)
-            led_M_o <= "010";
+            led_M_o <= "110";
         elsif (mid_i >= b"0011_1100") and (mid_i <= b"0101_1001") then -- Option 3 (60-89cm)
-            led_M_o <= "011";
+            led_M_o <= "101";
         elsif (mid_i >= b"0101_1010") and (mid_i <= b"0111_0111") then -- Option 4 (90-119cm)
             led_M_o <= "100";
         elsif (mid_i >= b"0111_1000") and (mid_i <= b"1001_0101") then -- Option 5 (120-149cm)
-            led_M_o <= "101";
+            led_M_o <= "011";
         elsif (mid_i >= b"1001_0110") and (mid_i <= b"1011_0011") then -- Option 6 (150-179cm)
-            led_M_o <= "110";
+            led_M_o <= "010";
         elsif (mid_i >= b"1011_0100") and (mid_i <= b"1100_1000") then -- Option 7 (180-200cm)
-            led_M_o <= "111";
+            led_M_o <= "001";
         elsif (mid_i = b"0000_0000") or  (mid_i = b"1111_1111") then -- Option 8 (Disabled)
             led_M_o <= "000";       
         end if;
@@ -180,19 +135,19 @@ begin
      p_led_R : process(right_i)
      begin   
         if (right_i >= b"0000_0001")    and (right_i <= b"0001_1101") then -- Option 1 (1-29cm)
-            led_R_o <= "001";
+            led_R_o <= "111";
         elsif (right_i >= b"0001_1110") and (right_i <= b"0011_1011") then -- Option 2 (30-59cm)
-            led_R_o <= "010";
+            led_R_o <= "110";
         elsif (right_i >= b"0011_1100") and (right_i <= b"0101_1001") then -- Option 3 (60-89cm)
-            led_R_o <= "011";
+            led_R_o <= "101";
         elsif (right_i >= b"0101_1010") and (right_i <= b"0111_0111") then -- Option 4 (90-119cm)
             led_R_o <= "100";
         elsif (right_i >= b"0111_1000") and (right_i <= b"1001_0101") then -- Option 5 (120-149cm)
-            led_R_o <= "101";
+            led_R_o <= "011";
         elsif (right_i >= b"1001_0110") and (right_i <= b"1011_0011") then -- Option 6 (150-179cm)
-            led_R_o <= "110";
+            led_R_o <= "010";
         elsif (right_i >= b"1011_0100") and (right_i <= b"1100_1000") then -- Option 7 (180-200cm)
-            led_R_o <= "111";
+            led_R_o <= "001";
         elsif (right_i = b"0000_0000") or  (right_i = b"1111_1111") then -- Option 8 (Disabled)
             led_R_o <= "000";       
         end if;
