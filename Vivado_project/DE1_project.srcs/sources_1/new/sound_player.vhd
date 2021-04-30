@@ -29,21 +29,26 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity sound_player is
-    Port ( clk : in STD_LOGIC;
-           rst : in STD_LOGIC;
-           data_out : out unsigned (7 downto 0));
+    generic(
+            g_VOLUME : natural := 4;
+            g_TICKS_PER_SAMPLE : natural := 10); -- 1042 clk ticks for 1 sample
+    
+    Port ( 
+           clk :        in STD_LOGIC;
+           rst :        in STD_LOGIC;
+           data_out :   out unsigned (7 downto 0));
 end sound_player;
 
 architecture Behavioral of sound_player is
     -- Local constants
-    constant c_sample_period:   natural := 4; -- for 96kHz sample freq -- original 1042 clk ticks
-    constant c_n_samples:        natural := 100-1; -- total numer of samples in memorz // original 2303-1
-    constant c_volume:          natural := 4; --volume regulation 0 to 12,, higher means lower vol. 
+    constant c_sample_period :       natural := g_TICKS_PER_SAMPLE; -- length of sample in clk ticks
+    constant c_n_samples :           natural := 2303-1; -- total numer of samples in memorz // original 2303-1
+    constant c_volume :              natural := g_VOLUME; --volume regulation 0 to 12,, higher means lower vol. 
     -- Local signals 
-    signal s_address :       unsigned(11 downto 0):= (others => '0'); -- addres signal for memorz
-    signal s_sample_clk :    std_logic; --internal clk   
-    signal s_clk_tick_counter : unsigned (11 downto 0); -- counter for clock divider
-    signal s_data_in :       unsigned (7 downto 0); -- internal signal, memorz input
+    signal s_address :              unsigned(11 downto 0); -- addres signal for memory
+    signal s_sample_clk :           std_logic; --internal slowed clk   
+    signal s_clk_tick_counter :     unsigned (11 downto 0); -- counter for clock divider
+    signal s_data_in :              unsigned (7 downto 0); -- internal signal, memorz input
 begin
     -- Sound Memory implemeentation
     uut_sound_memoy: entity work.sound_memory
@@ -71,11 +76,11 @@ begin
     
     -- ADRESS OUTPUT ACTUALISE
     -- cyclicaly set addres 0 to c_n_samples
-    p_samples_loading: process(s_sample_clk) begin
-        if rising_edge(s_sample_clk) then
-            if(rst = '1') then
-                s_address <= (others => '0');
-            else
+    p_samples_loading: process(clk, s_sample_clk) begin
+        if(rising_edge(clk) and (rst = '1')) then
+            s_address <= (others => '0'); 
+        else
+            if rising_edge(s_sample_clk) then
                 s_address <= s_address + 1; -- set next address
                 -- addres counter overflow
                 if (s_address >= c_n_samples) then 
