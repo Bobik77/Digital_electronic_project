@@ -2,23 +2,33 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Fri Apr 30 10:01:25 2021
-# Process ID: 8688
-# Current directory: C:/Users/varmu/Documents/DE1_project/Digital_electronic_project/Vivado_project
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3412 C:\Users\varmu\Documents\DE1_project\Digital_electronic_project\Vivado_project\DE1_project.xpr
-# Log file: C:/Users/varmu/Documents/DE1_project/Digital_electronic_project/Vivado_project/vivado.log
-# Journal file: C:/Users/varmu/Documents/DE1_project/Digital_electronic_project/Vivado_project\vivado.jou
+# Start of session at: Fri Apr 30 13:58:19 2021
+# Process ID: 1876
+# Current directory: C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent19652 C:\Users\samue\Documents\GitHub\Digital_electronic_project\Vivado_project\DE1_project.xpr
+# Log file: C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/vivado.log
+# Journal file: C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project\vivado.jou
 #-----------------------------------------------------------
 start_gui
-open_project C:/Users/varmu/Documents/DE1_project/Digital_electronic_project/Vivado_project/DE1_project.xpr
+open_project C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.xpr
 INFO: [Project 1-313] Project file moved from 'C:/Users/Ventus/Documents/VivadoDocs/Digital_electronic_project/Vivado_project' since last save.
-WARNING: [filemgmt 56-2] Default IP Output Path : Could not find the directory 'C:/Users/varmu/Documents/DE1_project/Digital_electronic_project/Vivado_project/DE1_project.gen/sources_1', nor could it be found using path 'C:/Users/Ventus/Documents/VivadoDocs/Digital_electronic_project/Vivado_project/DE1_project.gen/sources_1'.
-CRITICAL WARNING: [Project 1-311] Could not find the file 'C:/Users/varmu/Documents/DE1_project/Digital_electronic_project/Vivado_project/DE1_project.srcs/sim_1/new/tb_sound_memory.vhd', nor could it be found using path 'C:/Users/Ventus/Documents/VivadoDocs/Digital_electronic_project/Vivado_project/DE1_project.srcs/sim_1/new/tb_sound_memory.vhd'.
+CRITICAL WARNING: [Project 1-311] Could not find the file 'C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sim_1/new/tb_sound_memory.vhd', nor could it be found using path 'C:/Users/Ventus/Documents/VivadoDocs/Digital_electronic_project/Vivado_project/DE1_project.srcs/sim_1/new/tb_sound_memory.vhd'.
 Scanning sources...
 Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
+open_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:05 . Memory (MB): peak = 1016.902 ; gain = 0.000
 update_compile_order -fileset sources_1
+open_bd_design {C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/bd/design_1/design_1.bd}
+Reading block design file <C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/bd/design_1/design_1.bd>...
+Successfully read diagram <design_1> from block design file <C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/bd/design_1/design_1.bd>
+open_bd_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 1016.902 ; gain = 0.000
+close_bd_design [get_bd_designs design_1]
+Wrote  : <C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/bd/design_1/ui/bd_1f5defd0.ui> 
+open_bd_design {C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/bd/design_1/design_1.bd}
+Reading block design file <C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/bd/design_1/design_1.bd>...
+Successfully read diagram <design_1> from block design file <C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/bd/design_1/design_1.bd>
+close_bd_design [get_bd_designs design_1]
 exit
-INFO: [Common 17-206] Exiting Vivado at Fri Apr 30 10:03:23 2021...
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 30 15:41:59 2021...
