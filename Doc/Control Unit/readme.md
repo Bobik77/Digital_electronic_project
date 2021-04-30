@@ -19,4 +19,4 @@
 Obrázky simulací ukazují různé stavy, které mohu nastat a potvrzují, že na výstupu pro Sound driveru se nachází vždy ta nejnižší hodnota.
 ![Sim1](Img/Obr1.png)
 ![Sim2](Img/Obr2.png)
-![Sim3](Ims/Obr3.png)
+![Sim3](Img/Obr3.png)
