@@ -31,7 +31,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity sound_player is
     generic(
             g_VOLUME : natural := 4;
-            g_TICKS_PER_SAMPLE : natural := 10); -- 1042 clk ticks for 1 sample
+            g_TICKS_PER_SAMPLE : natural := 1042); -- 1042 clk ticks for 1 sample
     
     Port ( 
            clk :        in STD_LOGIC;
@@ -41,9 +41,9 @@ end sound_player;
 
 architecture Behavioral of sound_player is
     -- Local constants
-    constant c_sample_period :       natural := g_TICKS_PER_SAMPLE; -- length of sample in clk ticks
+    constant c_sample_period :       natural := g_TICKS_PER_SAMPLE; -- length of sample in clk ticks, 
     constant c_n_samples :           natural := 2303-1; -- total numer of samples in memorz // original 2303-1
-    constant c_volume :              natural := g_VOLUME; --volume regulation 0 to 12,, higher means lower vol. 
+    constant c_volume :              natural := g_VOLUME; --volume regulation 0 to cca 12,, higher means lower vol. 
     -- Local signals 
     signal s_address :              unsigned(11 downto 0); -- addres signal for memory
     signal s_sample_clk :           std_logic; --internal slowed clk   

@@ -132,6 +132,7 @@ begin
     ----------------------------------------------------------------------------------
     -- Instance of led driver
     led_driver_0: entity work.led_driver
+        --generic map(g_BLINK_TIME := 10;) -- uncomment for fast simulation     
         port map(-- control signals
                  clk    => CLK,
                  reset    => RST,
