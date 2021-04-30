@@ -71,15 +71,16 @@ architecture Behavioral of led_driver is
     signal s_cnt    : integer;      -- time counter for blinking
     
     -- values for local counter
+    -- constant c_blink_time : integer := 20; -- for simulation needs
     constant c_blink_time : integer := 20000000; -- (200 ms) - time for turn on/off diode
     constant c_zero       : integer := 0;        -- zero
 
     begin
     
     
-    p_L_led : process(state_L)  -- assignment of 5 levels due to input signal - LEFT sensor
+    p_L_led : process(state_L,reset)  -- assignment of 5 levels due to input signal - LEFT sensor
     begin
-        if (reset <= '1') then
+        if (reset = '1') then
             s_stateL <= L_LOW0;
         else
             case state_L is
@@ -104,9 +105,9 @@ architecture Behavioral of led_driver is
             
     end process p_L_led;
     
-    p_M_led : process(state_M)  -- assignment of 5 levels due to input signal - MIDDLE sensor
+    p_M_led : process(state_M,reset)  -- assignment of 5 levels due to input signal - MIDDLE sensor
     begin
-        if (reset <= '1') then
+        if (reset = '1') then
             s_stateM <= M_LOW0;
         else
             case state_M is
@@ -131,9 +132,9 @@ architecture Behavioral of led_driver is
                            
     end process p_M_led;
     
-    p_R_led : process(state_R)  -- assignment of 5 levels due to input signal - RIGHT sensor
+    p_R_led : process(state_R,reset)  -- assignment of 5 levels due to input signal - RIGHT sensor
     begin
-        if (reset <= '1') then
+        if (reset = '1') then
             s_stateR <= R_LOW0;
         else
             case state_R is
@@ -160,7 +161,7 @@ architecture Behavioral of led_driver is
     
     p_blink : process(clk) -- generator
     begin
-        if (reset <= '1') then 
+        if (reset = '1') then 
             s_cnt <= c_zero; -- counter set
             s_blink_state <= '0'; -- leds off
         else
@@ -236,7 +237,7 @@ architecture Behavioral of led_driver is
                 LED_M3_o <= "000";
                         
             when M_LOW1 =>          -- first led green
-                LED_L0_o <= "010";
+                LED_M0_o <= "010";
                 LED_M1_o <= "000";
                 LED_M2_o <= "000";
                 LED_M3_o <= "000";
@@ -262,16 +263,16 @@ architecture Behavioral of led_driver is
                 -- M_HIGH2          
             when others =>          -- red diode flashes
                 if (s_blink_state = '1') then
-                    LED_L0_o <= "100";      -- all diodes red
-                    LED_L1_o <= "100";
-                    LED_L2_o <= "100";
-                    LED_L3_o <= "100";
+                    LED_M0_o <= "100";      -- all diodes red
+                    LED_M1_o <= "100";
+                    LED_M2_o <= "100";
+                    LED_M3_o <= "100";
                     
                 else    
-                    LED_L0_o <= "000";      -- all diodes off
-                    LED_L1_o <= "000";
-                    LED_L2_o <= "000";
-                    LED_L3_o <= "000";
+                    LED_M0_o <= "000";      -- all diodes off
+                    LED_M1_o <= "000";
+                    LED_M2_o <= "000";
+                    LED_M3_o <= "000";
                 end if;                                         
         end case;
     end process p_output_M;
@@ -312,16 +313,16 @@ architecture Behavioral of led_driver is
                 -- R_HIGH2          
             when others =>          -- red diode flashes
                 if (s_blink_state = '1') then
-                    LED_L0_o <= "100";      -- all diodes red
-                    LED_L1_o <= "100";
-                    LED_L2_o <= "100";
-                    LED_L3_o <= "100";
+                    LED_R0_o <= "100";      -- all diodes red
+                    LED_R1_o <= "100";
+                    LED_R2_o <= "100";
+                    LED_R3_o <= "100";
                     
                 else    
-                    LED_L0_o <= "000";      -- all diodes off
-                    LED_L1_o <= "000";
-                    LED_L2_o <= "000";
-                    LED_L3_o <= "000";
+                    LED_R0_o <= "000";      -- all diodes off
+                    LED_R1_o <= "000";
+                    LED_R2_o <= "000";
+                    LED_R3_o <= "000";
                 end if;                                  
         end case;
     end process p_output_R;

@@ -3,7 +3,11 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
+<<<<<<< HEAD
 <application name="pa" timeStamp="Fri Apr 30 15:41:57 2021">
+=======
+<application name="pa" timeStamp="Fri Apr 30 12:16:28 2021">
+>>>>>>> 67b9e15df9d8ffee7d800e14acc058276c4263cc
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="ca4d97aed51c472e9c206aaede05666b" type="ProjectID"/>
 <property name="ProjectIteration" value="1" type="ProjectIteration"/>
@@ -21,7 +25,11 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="CloseProject" value="1" type="JavaHandler"/>
 <property name="CreateBlockDesign" value="1" type="JavaHandler"/>
 <property name="EditDelete" value="1" type="JavaHandler"/>
+<<<<<<< HEAD
 <property name="ExitApp" value="13" type="JavaHandler"/>
+=======
+<property name="ExitApp" value="16" type="JavaHandler"/>
+>>>>>>> 67b9e15df9d8ffee7d800e14acc058276c4263cc
 <property name="NewProject" value="1" type="JavaHandler"/>
 <property name="OpenProject" value="2" type="JavaHandler"/>
 <property name="SaveFileProxyHandler" value="2" type="JavaHandler"/>
@@ -43,13 +51,21 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="BaseDialog_OK" value="91" type="GuiHandlerData"/>
 <property name="BaseDialog_YES" value="1" type="GuiHandlerData"/>
 <property name="CmdMsgDialog_MESSAGES" value="1" type="GuiHandlerData"/>
+<<<<<<< HEAD
 <property name="CmdMsgDialog_OK" value="15" type="GuiHandlerData"/>
+=======
+<property name="CmdMsgDialog_OK" value="17" type="GuiHandlerData"/>
+>>>>>>> 67b9e15df9d8ffee7d800e14acc058276c4263cc
 <property name="CommandsInput_TYPE_TCL_COMMAND_HERE" value="1" type="GuiHandlerData"/>
 <property name="ConfirmSaveTextEditsDialog_NO" value="1" type="GuiHandlerData"/>
 <property name="ConfirmSaveTextEditsDialog_YES" value="1" type="GuiHandlerData"/>
 <property name="CreateSrcFileDialog_FILE_NAME" value="12" type="GuiHandlerData"/>
 <property name="DefineModulesDialog_DEFINE_MODULES_AND_SPECIFY_IO_PORTS" value="31" type="GuiHandlerData"/>
+<<<<<<< HEAD
 <property name="FileSetPanel_FILE_SET_PANEL_TREE" value="171" type="GuiHandlerData"/>
+=======
+<property name="FileSetPanel_FILE_SET_PANEL_TREE" value="158" type="GuiHandlerData"/>
+>>>>>>> 67b9e15df9d8ffee7d800e14acc058276c4263cc
 <property name="FileSetPanel_MESSAGES" value="1" type="GuiHandlerData"/>
 <property name="FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE" value="3" type="GuiHandlerData"/>
 <property name="GettingStartedView_OPEN_PROJECT" value="1" type="GuiHandlerData"/>
@@ -124,9 +140,15 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="WaveformView_GOTO_TIME_0" value="28" type="GuiHandlerData"/>
 </item>
 <item name="Other">
+<<<<<<< HEAD
 <property name="GuiMode" value="86" type="GuiMode"/>
 <property name="BatchMode" value="0" type="BatchMode"/>
 <property name="TclMode" value="77" type="TclMode"/>
+=======
+<property name="GuiMode" value="53" type="GuiMode"/>
+<property name="BatchMode" value="0" type="BatchMode"/>
+<property name="TclMode" value="46" type="TclMode"/>
+>>>>>>> 67b9e15df9d8ffee7d800e14acc058276c4263cc
 </item>
 </section>
 </application>
