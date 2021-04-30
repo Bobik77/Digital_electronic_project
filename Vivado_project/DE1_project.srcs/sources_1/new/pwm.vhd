@@ -36,7 +36,7 @@ entity pwm is
   
     clk           : in std_logic;
     duty          : in unsigned(8 - 1 downto 0);
-    output        : inout std_logic
+    output        : out std_logic
       
   );
 end pwm;
