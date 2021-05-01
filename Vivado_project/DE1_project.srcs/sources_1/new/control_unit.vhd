@@ -66,7 +66,7 @@ begin
         if (inter_sound >= b"0000_0001")    and (inter_sound <= b"0001_1101") then -- Option 1 (1-29cm)
             sound_o <= "111";
         elsif (inter_sound >= b"0001_1110") and (inter_sound <= b"0011_1011") then -- Option 2 (30-59cm)
-            sound_o <= "100";--010
+            sound_o <= "110";--010
         elsif (inter_sound >= b"0011_1100") and (inter_sound <= b"0101_1001") then -- Option 3 (60-89cm)
             sound_o <= "101";
         elsif (inter_sound >= b"0101_1010") and (inter_sound <= b"0111_0111") then -- Option 4 (90-119cm)
