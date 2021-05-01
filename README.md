@@ -41,9 +41,12 @@ lowest distance are all four leds flashing red.
 
 
 ### `sound_player`
-Input signal is 3b from `control_unit` ...
+* `sound_memory`
+    * Contains a short (0.8 s) section of audio.
+    
 
 ## TOP module description and simulations
+![top_architecture](Doc/Top/img/top_module_architecture.png)
 
 ## Video
 
