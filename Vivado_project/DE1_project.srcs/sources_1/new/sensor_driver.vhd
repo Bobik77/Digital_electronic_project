@@ -49,7 +49,7 @@ architecture Behavioral of sensor_driver is
                      fault);
     signal s_state : t_state := idle; -- define actual state variable 
     signal s_counter : integer := 980000; --preset for shorten first interval
-    signal s_distance : integer := 0; -- int for calculating distance
+    signal s_distance : natural := 0; -- int for calculating distance
 --    signal s_distance : std_logic_vector(7 downto 0);
     
     -- Timing constants in ticks (clk tick = 10ns)
@@ -75,6 +75,7 @@ begin
             -- Every clk tick rutines:
             -- increment counter every clk tick
             s_counter <= s_counter + 1;
+            distance_o <= std_logic_vector(to_unsigned(s_distance, 8));
             
             case s_state is
                when idle =>
@@ -112,8 +113,8 @@ begin
                         -- compute distance (in cm)
                         s_distance <= (s_counter+1)/5800;  
                         -- range threatment
-                        if (s_distance > 255) then s_distance <= 255; end if;  -- Max of range
-                        if (s_distance < 1)   then s_distance <= 1;   end if;  -- Min of range  
+                        --if (s_distance > 255) then s_distance <= 255; end if;  -- Max of range
+                        --if (s_distance < 1)   then s_distance <= 1;   end if;  -- Min of range  
                         -- mazbe TODO threatment of range of sensor itself (2cm-4meters)
                         -- TODO threatments are not funstion
                         s_counter <= 0;   -- reset counter

@@ -48,6 +48,7 @@ architecture Behavioral of tb_top is
         signal s_echo_R_i           : std_logic;
         
         signal s_speaker_o          : std_logic; 
+        --signal s_s_sound_state      : std_logic_vector(2 downto 0);
         
         signal s_LED_L0_o           : std_logic_vector(1 downto 0); 
         signal s_LED_L1_o           : std_logic_vector(1 downto 0); 
@@ -76,8 +77,10 @@ begin
             echo_M_i         => s_echo_M_i,
             echo_R_i         => s_echo_R_i,
             
+            
             speaker_o        => s_speaker_o,
-          
+            --s_sound_state    => s_s_sound_state,
+            
             LED_L0_o         => s_LED_L0_o,
             LED_L1_o         => s_LED_L1_o,
             LED_L2_o         => s_LED_L2_o,
@@ -117,28 +120,28 @@ begin
     p_sensor_simulation_L : process
         begin
             s_echo_L_i <= '0';
-            -- normal distance 26.8cm
-                wait until rising_edge(s_trigger_L_o); -- rise of trigger
-                wait until falling_edge(s_trigger_L_o);-- fall of trigger
-                wait for 800 us; --tarry
-                s_echo_L_i <= '1';
-                wait for 1560 us; -- echo pulse width
-                s_echo_L_i <= '0';  
                 
-            -- theoretical distance 1 cm
+            -- theoretical distance 170 cm
                 wait until rising_edge(s_trigger_L_o); -- rise of trigger
                 wait until falling_edge(s_trigger_L_o);-- fall of trigger
                 wait for 800 us; --tarry
                 s_echo_L_i <= '1';
-                wait for 58 us; -- echo pulse width 58
+                wait for 6000 us; -- echo pulse width 58
                 s_echo_L_i <= '0';
              
-              -- Max distance 255 cm   
+              -- Max distance 130 cm   
                 wait until rising_edge(s_trigger_L_o); -- rise of trigger
                 wait until falling_edge(s_trigger_L_o);-- fall of trigger
                 wait for 800 us; --tarry
                 s_echo_L_i <= '1';
-                wait for 190790 us; -- echo pulse width
+                wait for 3000 us; -- echo pulse width
+                s_echo_L_i <= '0';
+                
+                wait until rising_edge(s_trigger_L_o); -- rise of trigger
+                wait until falling_edge(s_trigger_L_o);-- fall of trigger
+                wait for 800 us; --tarry
+                s_echo_L_i <= '1';
+                wait for 1000 us; -- echo pulse width
                 s_echo_L_i <= '0';
                 
               -- Fault not responding 
@@ -157,32 +160,32 @@ begin
  
         end process p_sensor_simulation_L;
         
-    
-    p_sensor_simulation_M : process
+        
+        p_sensor_simulation_M : process
         begin
             s_echo_M_i <= '0';
-            -- normal distance 26.8cm
+            
+            -- theoretical distance 170 cm
                 wait until rising_edge(s_trigger_M_o); -- rise of trigger
                 wait until falling_edge(s_trigger_M_o);-- fall of trigger
                 wait for 800 us; --tarry
                 s_echo_M_i <= '1';
-                wait for 1560 us; -- echo pulse width
-                s_echo_M_i <= '0';  
-                
-            -- theoretical distance 1 cm
-                wait until rising_edge(s_trigger_M_o); -- rise of trigger
-                wait until falling_edge(s_trigger_M_o);-- fall of trigger
-                wait for 800 us; --tarry
-                s_echo_M_i <= '1';
-                wait for 58 us; -- echo pulse width 58
+                wait for 1000 us; -- echo pulse width 58
                 s_echo_M_i <= '0';
              
-              -- Max distance 255 cm   
+              -- Max distance 130 cm   
                 wait until rising_edge(s_trigger_M_o); -- rise of trigger
                 wait until falling_edge(s_trigger_M_o);-- fall of trigger
                 wait for 800 us; --tarry
                 s_echo_M_i <= '1';
-                wait for 190790 us; -- echo pulse width
+                wait for 1000 us; -- echo pulse width
+                s_echo_M_i <= '0';
+                
+                wait until rising_edge(s_trigger_M_o); -- rise of trigger
+                wait until falling_edge(s_trigger_M_o);-- fall of trigger
+                wait for 800 us; --tarry
+                s_echo_M_i <= '1';
+                wait for 1000 us; -- echo pulse width
                 s_echo_M_i <= '0';
                 
               -- Fault not responding 
@@ -201,33 +204,35 @@ begin
  
         end process p_sensor_simulation_M;
         
-    
-    p_sensor_simulation_R : process
+        
+        p_sensor_simulation_R : process
         begin
             s_echo_R_i <= '0';
-            -- normal distance 26.8cm
+            -- normal distance 250cm
                 wait until rising_edge(s_trigger_R_o); -- rise of trigger
                 wait until falling_edge(s_trigger_R_o);-- fall of trigger
                 wait for 800 us; --tarry
                 s_echo_R_i <= '1';
-                wait for 1560 us; -- echo pulse width
+                wait for 1000 us; -- echo pulse width
                 s_echo_R_i <= '0';  
                 
-            -- theoretical distance 1 cm
+            -- theoretical distance 170 cm
                 wait until rising_edge(s_trigger_R_o); -- rise of trigger
                 wait until falling_edge(s_trigger_R_o);-- fall of trigger
                 wait for 800 us; --tarry
                 s_echo_R_i <= '1';
-                wait for 58 us; -- echo pulse width 58
+                wait for 1000 us; -- echo pulse width 58
                 s_echo_R_i <= '0';
              
-              -- Max distance 255 cm   
+              -- Max distance 130 cm   
                 wait until rising_edge(s_trigger_R_o); -- rise of trigger
                 wait until falling_edge(s_trigger_R_o);-- fall of trigger
                 wait for 800 us; --tarry
                 s_echo_R_i <= '1';
-                wait for 190790 us; -- echo pulse width
+                wait for 1000 us; -- echo pulse width
                 s_echo_R_i <= '0';
+                
+                
                 
               -- Fault not responding 
                 wait until rising_edge(s_trigger_R_o); -- rise of trigger
@@ -242,7 +247,9 @@ begin
                 wait for 15000 us; -- echo pulse width
                 s_echo_R_i <= '0';
                 
+ 
         end process p_sensor_simulation_R;
         
-                 
+    
+               
 end Behavioral;

@@ -1,6 +1,18 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Ventus/Documents/VivadoDocs/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/new/led_driver.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/new/control_unit.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'control_unit'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/new/led_driver.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'led_driver'
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Ventus/Documents/VivadoDocs/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/new/top.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/new/pwm.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'pwm'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/new/sensor_driver.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'sensor_driver'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/new/sound_logic.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'sound_logic'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/new/sound_memory.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'sound_memory'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/new/sound_player.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'sound_player'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/new/top.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'top'
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Ventus/Documents/VivadoDocs/Digital_electronic_project/Vivado_project/DE1_project.srcs/sim_1/new/tb_top.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sim_1/new/tb_top.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'tb_top'
