@@ -47,20 +47,20 @@ architecture Behavioral of tb_led_driver is
         signal s_state_M  : std_logic_vector(3 - 1 downto 0);
         signal s_state_R  : std_logic_vector(3 - 1 downto 0);
         
-        signal s_LED_L0   : std_logic_vector(3 - 1 downto 0);
-        signal s_LED_L1   : std_logic_vector(3 - 1 downto 0);
-        signal s_LED_L2   : std_logic_vector(3 - 1 downto 0);
-        signal s_LED_L3   : std_logic_vector(3 - 1 downto 0);
+        signal s_LED_L0   : std_logic_vector(2 - 1 downto 0);
+        signal s_LED_L1   : std_logic_vector(2 - 1 downto 0);
+        signal s_LED_L2   : std_logic_vector(2 - 1 downto 0);
+        signal s_LED_L3   : std_logic_vector(2 - 1 downto 0);
         
-        signal s_LED_M0   : std_logic_vector(3 - 1 downto 0);
-        signal s_LED_M1   : std_logic_vector(3 - 1 downto 0);
-        signal s_LED_M2   : std_logic_vector(3 - 1 downto 0);
-        signal s_LED_M3   : std_logic_vector(3 - 1 downto 0);
+        signal s_LED_M0   : std_logic_vector(2 - 1 downto 0);
+        signal s_LED_M1   : std_logic_vector(2 - 1 downto 0);
+        signal s_LED_M2   : std_logic_vector(2 - 1 downto 0);
+        signal s_LED_M3   : std_logic_vector(2 - 1 downto 0);
         
-        signal s_LED_R0   : std_logic_vector(3 - 1 downto 0);
-        signal s_LED_R1   : std_logic_vector(3 - 1 downto 0);
-        signal s_LED_R2   : std_logic_vector(3 - 1 downto 0);
-        signal s_LED_R3   : std_logic_vector(3 - 1 downto 0);
+        signal s_LED_R0   : std_logic_vector(2 - 1 downto 0);
+        signal s_LED_R1   : std_logic_vector(2 - 1 downto 0);
+        signal s_LED_R2   : std_logic_vector(2 - 1 downto 0);
+        signal s_LED_R3   : std_logic_vector(2 - 1 downto 0);
 
 begin
     -- Connecting testbench signals with led_driver entity (Unit Under Test)
@@ -125,22 +125,22 @@ begin
         wait for 50ns;
         
         s_state_L <= "000";wait for 20ns;
-        assert ((s_LED_L0 = "000") and (s_LED_L1 = "000") and (s_LED_L2 = "000") and (s_LED_L3 = "000"))
+        assert ((s_LED_L0 = "00") and (s_LED_L1 = "00") and (s_LED_L2 = "00") and (s_LED_L3 = "00"))
         report "Test failed for input state_L '000'." severity error;
         s_state_L <= "001";wait for 20ns;
-        assert ((s_LED_L0 = "010") and (s_LED_L1 = "000") and (s_LED_L2 = "000") and (s_LED_L3 = "000"))
+        assert ((s_LED_L0 = "01") and (s_LED_L1 = "00") and (s_LED_L2 = "00") and (s_LED_L3 = "00"))
         report "Test failed for input state_L '001'." severity error;
-        s_state_L <= "010";wait for 20ns;
-        assert ((s_LED_L0 = "010") and (s_LED_L1 = "000") and (s_LED_L2 = "000") and (s_LED_L3 = "000"))
+        s_state_L <= "01";wait for 20ns;
+        assert ((s_LED_L0 = "01") and (s_LED_L1 = "00") and (s_LED_L2 = "00") and (s_LED_L3 = "00"))
         report "Test failed for input state_L '010'." severity error;
         s_state_L <= "011";wait for 20ns;
-        assert ((s_LED_L0 = "010") and (s_LED_L1 = "010") and (s_LED_L2 = "000") and (s_LED_L3 = "000"))
+        assert ((s_LED_L0 = "01") and (s_LED_L1 = "01") and (s_LED_L2 = "00") and (s_LED_L3 = "00"))
         report "Test failed for input state_L '011'." severity error;
         s_state_L <= "100";wait for 20ns;
-        assert ((s_LED_L0 = "010") and (s_LED_L1 = "010") and (s_LED_L2 = "110") and (s_LED_L3 = "000"))
+        assert ((s_LED_L0 = "01") and (s_LED_L1 = "01") and (s_LED_L2 = "11") and (s_LED_L3 = "00"))
         report "Test failed for input state_L '100'." severity error;
         s_state_L <= "101";wait for 20ns;
-        assert ((s_LED_L0 = "010") and (s_LED_L1 = "010") and (s_LED_L2 = "110") and (s_LED_L3 = "000"))
+        assert ((s_LED_L0 = "01") and (s_LED_L1 = "01") and (s_LED_L2 = "11") and (s_LED_L3 = "00"))
         report "Test failed for input state_L '101'." severity error;
         s_state_L <= "110";wait for 20ns;
         assert ((s_LED_L0 = "010") and (s_LED_L1 = "010") and (s_LED_L2 = "110") and (s_LED_L3 = "100"))

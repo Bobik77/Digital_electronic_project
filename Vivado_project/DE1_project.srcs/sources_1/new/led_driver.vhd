@@ -1,19 +1,15 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Engineer: Zdenka Varmuzova
 -- 
 -- Create Date: 09.04.2021 09:44:03
--- Design Name: 
 -- Module Name: led_driver - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
+-- Project Name: Digital_electronic_project
+-- Target Devices: Arty A7
 -- Description: 
--- 
+--      Logic which control led module.
 -- Dependencies: 
 -- 
--- Revision:
--- Revision 0.01 - File Created
+-- Revision 1.01 - File Created
 -- Additional Comments:
 -- 
 ----------------------------------------------------------------------------------
@@ -22,16 +18,10 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity led_driver is
+    generic(-- global variables
+        g_BILNK_TIME : natural := 20000000); --(200 ms) - time for turn on/off diode (in ticks)
     Port ( 
         clk       : in std_logic;     -- 100 MHz
         reset     : in std_logic;
@@ -39,20 +29,20 @@ entity led_driver is
         state_M_i : in std_logic_vector(3 - 1 downto 0);  -- state of middle sensor, 3 bits
         state_R_i : in std_logic_vector(3 - 1 downto 0);  -- state of right sensor, 3 bits
         
-        LED_L0_o : out std_logic_vector(3 - 1 downto 0); -- output color (RGB) of left leds
-        LED_L1_o : out std_logic_vector(3 - 1 downto 0);
-        LED_L2_o : out std_logic_vector(3 - 1 downto 0);
-        LED_L3_o : out std_logic_vector(3 - 1 downto 0);
+        LED_L0_o : out std_logic_vector(2 - 1 downto 0); -- output color (RGB) of left leds
+        LED_L1_o : out std_logic_vector(2 - 1 downto 0);
+        LED_L2_o : out std_logic_vector(2 - 1 downto 0);
+        LED_L3_o : out std_logic_vector(2 - 1 downto 0);
         
-        LED_M0_o : out std_logic_vector(3 - 1 downto 0); -- output color (RGB) of middle leds
-        LED_M1_o : out std_logic_vector(3 - 1 downto 0);
-        LED_M2_o : out std_logic_vector(3 - 1 downto 0);
-        LED_M3_o : out std_logic_vector(3 - 1 downto 0);
+        LED_M0_o : out std_logic_vector(2 - 1 downto 0); -- output color (RGB) of middle leds
+        LED_M1_o : out std_logic_vector(2 - 1 downto 0);
+        LED_M2_o : out std_logic_vector(2 - 1 downto 0);
+        LED_M3_o : out std_logic_vector(2 - 1 downto 0);
         
-        LED_R0_o : out std_logic_vector(3 - 1 downto 0); -- output color (RGB) of right leds
-        LED_R1_o : out std_logic_vector(3 - 1 downto 0);
-        LED_R2_o : out std_logic_vector(3 - 1 downto 0);
-        LED_R3_o : out std_logic_vector(3 - 1 downto 0)
+        LED_R0_o : out std_logic_vector(2 - 1 downto 0); -- output color (RGB) of right leds
+        LED_R1_o : out std_logic_vector(2 - 1 downto 0);
+        LED_R2_o : out std_logic_vector(2 - 1 downto 0);
+        LED_R3_o : out std_logic_vector(2 - 1 downto 0)
         
     );
 end led_driver;
@@ -72,8 +62,13 @@ architecture Behavioral of led_driver is
     
     -- values for local counter
     -- constant c_BLINK_TIME : integer := 20; -- for simulation needs
-    constant c_BLINK_TIME : integer := 20000000; -- (200 ms) - time for turn on/off diode
-    constant c_ZERO       : integer := 0;        -- zero
+    constant c_BLINK_TIME  : integer := 20000000; -- (200 ms) - time for turn on/off diode
+    constant c_ZERO        : integer := 0;        -- zero
+    -- define colors output vector
+    constant c_red         : std_logic_vector(1 downto 0) := "10"; -- Red
+    constant c_green       : std_logic_vector(1 downto 0) := "01"; -- Green
+    constant c_yellow      : std_logic_vector(1 downto 0) := "11"; -- Yellow
+    constant c_blank       : std_logic_vector(1 downto 0) := "00"; -- Off
 
     begin
     
@@ -181,48 +176,48 @@ architecture Behavioral of led_driver is
     begin
         case s_stateL is
             when L_LOW0 =>          -- no led shines
-                LED_L0_o <= "000";
-                LED_L1_o <= "000";
-                LED_L2_o <= "000";
-                LED_L3_o <= "000";
+                LED_L0_o <= c_blank;
+                LED_L1_o <= c_blank;
+                LED_L2_o <= c_blank;
+                LED_L3_o <= c_blank;
                         
             when L_LOW1 =>          -- first led green
-                LED_L0_o <= "010";
-                LED_L1_o <= "000";
-                LED_L2_o <= "000";
-                LED_L3_o <= "000";
+                LED_L0_o <= c_green;
+                LED_L1_o <= c_blank;
+                LED_L2_o <= c_blank;
+                LED_L3_o <= c_blank;
                 
             when L_LOW2 =>          -- first and second led green
-                LED_L0_o <= "010";
-                LED_L1_o <= "010";
-                LED_L2_o <= "000";
-                LED_L3_o <= "000";
+                LED_L0_o <= c_green;
+                LED_L1_o <= c_green;
+                LED_L2_o <= c_blank;
+                LED_L3_o <= c_blank;
                 
             when L_MED =>           -- first, second led green, third led yellow
-                LED_L0_o <= "010";
-                LED_L1_o <= "010";
-                LED_L2_o <= "110";
-                LED_L3_o <= "000";
+                LED_L0_o <= c_green;
+                LED_L1_o <= c_green;
+                LED_L2_o <= c_yellow;
+                LED_L3_o <= c_blank;
                 
             when L_HIGH1 =>          -- green, green, yellow, red
-                LED_L0_o <= "010";
-                LED_L1_o <= "010";
-                LED_L2_o <= "110";
-                LED_L3_o <= "100";
+                LED_L0_o <= c_green;
+                LED_L1_o <= c_green;
+                LED_L2_o <= c_yellow;
+                LED_L3_o <= c_red;
                 
                 -- L_HIGH2          
             when others =>          -- red diode flashes
                 if (s_blink_state = '1') then
-                    LED_L0_o <= "100";      -- all diodes red
-                    LED_L1_o <= "100";
-                    LED_L2_o <= "100";
-                    LED_L3_o <= "100";
+                    LED_L0_o <= c_red;      -- all diodes red
+                    LED_L1_o <= c_red;
+                    LED_L2_o <= c_red;
+                    LED_L3_o <= c_red;
                     
                 else    
-                    LED_L0_o <= "000";      -- all diodes off
-                    LED_L1_o <= "000";
-                    LED_L2_o <= "000";
-                    LED_L3_o <= "000";
+                    LED_L0_o <= c_blank;      -- all diodes off
+                    LED_L1_o <= c_blank;
+                    LED_L2_o <= c_blank;
+                    LED_L3_o <= c_blank;
                 end if;                                  
         end case;
     end process p_output_L;
@@ -231,48 +226,48 @@ architecture Behavioral of led_driver is
     begin
         case s_stateM is
             when M_LOW0 =>          -- no led shines
-                LED_M0_o <= "000";
-                LED_M1_o <= "000";
-                LED_M2_o <= "000";
-                LED_M3_o <= "000";
+                LED_M0_o <= c_blank;
+                LED_M1_o <= c_blank;
+                LED_M2_o <= c_blank;
+                LED_M3_o <= c_blank;
                         
             when M_LOW1 =>          -- first led green
-                LED_M0_o <= "010";
-                LED_M1_o <= "000";
-                LED_M2_o <= "000";
-                LED_M3_o <= "000";
+                LED_M0_o <= c_green;
+                LED_M1_o <= c_blank;
+                LED_M2_o <= c_blank;
+                LED_M3_o <= c_blank;
                 
             when M_LOW2 =>          -- first and second led green
-                LED_M0_o <= "010";
-                LED_M1_o <= "010";
-                LED_M2_o <= "000";
-                LED_M3_o <= "000";
+                LED_M0_o <= c_green;
+                LED_M1_o <= c_green;
+                LED_M2_o <= c_blank;
+                LED_M3_o <= c_blank;
                 
             when M_MED =>           -- first, second led green, third led yellow
-                LED_M0_o <= "010";
-                LED_M1_o <= "010";
-                LED_M2_o <= "110";
-                LED_M3_o <= "000";
+                LED_M0_o <= c_green;
+                LED_M1_o <= c_green;
+                LED_M2_o <= c_yellow;
+                LED_M3_o <= c_blank;
                 
             when M_HIGH1 =>          -- green, green, yellow, red
-                LED_M0_o <= "010";
-                LED_M1_o <= "010";
-                LED_M2_o <= "110";
-                LED_M3_o <= "100";
+                LED_M0_o <= c_green;
+                LED_M1_o <= c_green;
+                LED_M2_o <= c_yellow;
+                LED_M3_o <= c_red;
                 
                 -- M_HIGH2          
             when others =>          -- red diode flashes
                 if (s_blink_state = '1') then
-                    LED_M0_o <= "100";      -- all diodes red
-                    LED_M1_o <= "100";
-                    LED_M2_o <= "100";
-                    LED_M3_o <= "100";
+                    LED_M0_o <= c_red;      -- all diodes red
+                    LED_M1_o <= c_red;
+                    LED_M2_o <= c_red;
+                    LED_M3_o <= c_red;
                     
                 else    
-                    LED_M0_o <= "000";      -- all diodes off
-                    LED_M1_o <= "000";
-                    LED_M2_o <= "000";
-                    LED_M3_o <= "000";
+                    LED_M0_o <= c_blank;      -- all diodes off
+                    LED_M1_o <= c_blank;
+                    LED_M2_o <= c_blank;
+                    LED_M3_o <= c_blank;
                 end if;                                         
         end case;
     end process p_output_M;
@@ -281,48 +276,48 @@ architecture Behavioral of led_driver is
     begin
         case s_stateR is
             when R_LOW0 =>          -- no led shines
-                LED_R0_o <= "000";
-                LED_R1_o <= "000";
-                LED_R2_o <= "000";
-                LED_R3_o <= "000";
+                LED_R0_o <= c_blank;
+                LED_R1_o <= c_blank;
+                LED_R2_o <= c_blank;
+                LED_R3_o <= c_blank;
                         
             when R_LOW1 =>          -- first led green
-                LED_R0_o <= "010";
-                LED_R1_o <= "000";
-                LED_R2_o <= "000";
-                LED_R3_o <= "000";
+                LED_R0_o <= c_green;
+                LED_R1_o <= c_blank;
+                LED_R2_o <= c_blank;
+                LED_R3_o <= c_blank;
                 
             when R_LOW2 =>          -- first and second led green
-                LED_R0_o <= "010";
-                LED_R1_o <= "010";
-                LED_R2_o <= "000";
-                LED_R3_o <= "000";
+                LED_R0_o <= c_green;
+                LED_R1_o <= c_green;
+                LED_R2_o <= c_blank;
+                LED_R3_o <= c_blank;
                 
             when R_MED =>           -- first, second led green, third led yellow
-                LED_R0_o <= "010";
-                LED_R1_o <= "010";
-                LED_R2_o <= "110";
-                LED_R3_o <= "000";
+                LED_R0_o <= c_green;
+                LED_R1_o <= c_green;
+                LED_R2_o <= c_yellow;
+                LED_R3_o <= c_blank;
                 
             when R_HIGH1 =>          -- green, green, yellow, red
-                LED_R0_o <= "010";
-                LED_R1_o <= "010";
-                LED_R2_o <= "110";
-                LED_R3_o <= "100";
+                LED_R0_o <= c_green;
+                LED_R1_o <= c_green;
+                LED_R2_o <= c_yellow;
+                LED_R3_o <= c_red;
                 
                 -- R_HIGH2          
             when others =>          -- red diode flashes
                 if (s_blink_state = '1') then
-                    LED_R0_o <= "100";      -- all diodes red
-                    LED_R1_o <= "100";
-                    LED_R2_o <= "100";
-                    LED_R3_o <= "100";
+                    LED_R0_o <= c_red;      -- all diodes red
+                    LED_R1_o <= c_red;
+                    LED_R2_o <= c_red;
+                    LED_R3_o <= c_red;
                     
                 else    
-                    LED_R0_o <= "000";      -- all diodes off
-                    LED_R1_o <= "000";
-                    LED_R2_o <= "000";
-                    LED_R3_o <= "000";
+                    LED_R0_o <= c_blank;      -- all diodes off
+                    LED_R1_o <= c_blank;
+                    LED_R2_o <= c_blank;
+                    LED_R3_o <= c_blank;
                 end if;                                  
         end case;
     end process p_output_R;

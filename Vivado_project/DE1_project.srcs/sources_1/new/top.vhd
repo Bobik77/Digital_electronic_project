@@ -39,7 +39,7 @@ entity top is
         -- SPEAKER Wiring
         speaker_o:       out std_logic;  -- speaker pwm output
         
-        -- LEDs Wiring
+        -- LEDs Wiring (RED; GREEN)
         LED_L0_o:        out std_logic_vector(1 downto 0);  -- left side LEDs
         LED_L1_o:        out std_logic_vector(1 downto 0);  
         LED_L2_o:        out std_logic_vector(1 downto 0);
@@ -68,6 +68,8 @@ architecture Behavioral of top is
     signal s_sound_data:  unsigned(7 downto 0);
     -- pwm modulated sound (continuous)
     signal s_sound_PWM:   std_logic;
+    -- signal for unused bits of led output vector (we dont use blue color)
+    signal s_unused:      std_logic_vector(11 downto 0);
     
 begin
     ----------------------------------------------------------------------------------
@@ -130,6 +132,7 @@ begin
     ----------------------------------------------------------------------------------
     -- Instance of led driver
     led_driver_0: entity work.led_driver
+        --generic map(g_BLINK_TIME := 10;) -- uncomment for fast simulation     
         port map(-- control signals
                  clk    => CLK,
                  reset    => RST,
@@ -138,25 +141,27 @@ begin
                  state_M_i => s_led_M_state, -- middle
                  state_R_i => s_led_R_state, -- right side
                  -- LED outputs
-                 LED_L0_o(1 downto 0) => LED_L0_o, -- left side LEDs
-                 LED_L1_o(1 downto 0) => LED_L1_o,
-                 LED_L2_o(1 downto 0) => LED_L2_o,
-                 LED_L3_o(1 downto 0) => LED_L3_o,
-                 LED_M0_o(1 downto 0) => LED_M0_o, -- middle     LEDs
-                 LED_M1_o(1 downto 0) => LED_M1_o,
-                 LED_M2_o(1 downto 0) => LED_M2_o,
-                 LED_M3_o(1 downto 0) => LED_M3_o,
-                 LED_R0_o(1 downto 0) => LED_R0_o, -- right side LEDs
-                 LED_R1_o(1 downto 0) => LED_R1_o,
-                 LED_R2_o(1 downto 0) => LED_R2_o,
-                 LED_R3_o(1 downto 0) => LED_R3_o
-                 );
+                 LED_L0_o => LED_L0_o, -- left side LEDs
+                 LED_L1_o => LED_L1_o,
+                 LED_L2_o => LED_L2_o,
+                 LED_L3_o => LED_L3_o,
+                 LED_M0_o => LED_M0_o, -- middle     LEDs
+                 LED_M1_o => LED_M1_o,
+                 LED_M2_o => LED_M2_o,
+                 LED_M3_o => LED_M3_o,
+                 LED_R0_o => LED_R0_o, -- right side LEDs
+                 LED_R1_o => LED_R1_o,
+                 LED_R2_o => LED_R2_o,
+                 LED_R3_o => LED_R3_o);
                                 
     ----------------------------------------------------------------------------------
     -- SOUND ACTUATOR
     ----------------------------------------------------------------------------------
     -- Instance of sound player with memory
-    sound_player_0: entity work.sound_player
+    sound_player_0 : entity work.sound_player
+        generic map(-- global constants
+                    g_TICKS_PER_SAMPLE => 10,  --sample duration in ticks; original value = 1042
+                    g_VOLUME           => 2)   --volume adjust
         port map(-- control signals
                  clk      => CLK,
                  rst      => RST,
