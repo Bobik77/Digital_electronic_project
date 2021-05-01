@@ -1,0 +1,32 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+<<<<<<< HEAD
+# Start of session at: Fri Apr 30 17:55:26 2021
+# Process ID: 25380
+=======
+<<<<<<< HEAD
+# Start of session at: Fri Apr 30 13:58:19 2021
+# Process ID: 1876
+# Current directory: C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent19652 C:\Users\samue\Documents\GitHub\Digital_electronic_project\Vivado_project\DE1_project.xpr
+# Log file: C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/vivado.log
+# Journal file: C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project\vivado.jou
+=======
+# Start of session at: Fri Apr 30 12:11:12 2021
+# Process ID: 9228
+>>>>>>> 5668935b84b38255140de5f253e36f130d382907
+# Current directory: C:/Users/varmu/Documents/DE1_project/Digital_electronic_project/Vivado_project
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12776 C:\Users\varmu\Documents\DE1_project\Digital_electronic_project\Vivado_project\DE1_project.xpr
+# Log file: C:/Users/varmu/Documents/DE1_project/Digital_electronic_project/Vivado_project/vivado.log
+# Journal file: C:/Users/varmu/Documents/DE1_project/Digital_electronic_project/Vivado_project\vivado.jou
+>>>>>>> 67b9e15df9d8ffee7d800e14acc058276c4263cc
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.xpr
+update_compile_order -fileset sources_1
+open_bd_design {C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/bd/design_1/design_1.bd}
+close_bd_design [get_bd_designs design_1]
+open_bd_design {C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.srcs/sources_1/bd/design_1/design_1.bd}
+close_bd_design [get_bd_designs design_1]

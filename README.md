@@ -4,7 +4,7 @@
 
 Turák Samuel   `ID: 221059`
 
-Vala David  `ID: xxxxxxx`
+~~Vala David  `ID: xxxxxx`.~~
 
 Vaněk Pavel  `ID: 221072`
 
@@ -14,6 +14,42 @@ Zbořil Dominik `ID: 221074`
 
 [Project folder link](https://github.com/Bobik77/Digital_electronic_project)
 
+### Project objectives
+* the task:
+    * Parking assistant with HC-SR04 ultrasonic sensor, sound signaling using PWM, 
+    signaling by LED bargraph.
+
+## Hardware description
+
+## VHDL modules description and simulations
+For additional description see README.md files for each module in folder Doc.
+### `sensor_driver`
+
+### `control_unit`
+Takes input data from `sensor_driver` and convers them into required output. 
+The inputs are three 8b signals, one from each of the sensors. The output is 
+a 3b singal for each direction. These signals are input signals for `led_driver`. 
+The last output from this module is aslo a 3b signal, which is actually the one of
+the previous three with the smallest value. This signal goes to `sound_player`.
+
+### `led_driver`
+The module `led_driver` is the controller of 12 LED diodes. The input signals (3x3b) 
+are sorted by value into 6 states. For the greatist distance (over 200 cm) is output 
+zero and no led is shining. As the distance is increasing, the leds lights up gradually. 
+First and second lit green, the third lid yellow and the last one lid red. For the 
+lowest distance are all four leds flashing red.
+
+
+### `sound_player`
+Input signal is 3b from `control_unit` ...
+
+## TOP module description and simulations
+
+## Video
+
+## References
+
+---------------------------------------------------------
 
 # Základní skica topologie
 ![work_schelude](Doc/work_schelude.png)

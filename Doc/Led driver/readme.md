@@ -32,6 +32,8 @@ všechny LED diody blikají červeně
 ### Znázornění stavů - výstup LED
 ![states](images/LEDs_img.png)
 
+### Vzdálenost od senzoru podle stavu
+![distance](images/led_distance.png)
 ## Simulace
 ![Sim1](images/Sim1.png)
 ![Sim2](images/Sim2.png)
