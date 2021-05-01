@@ -2,10 +2,10 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Sat May  1 22:37:49 2021
-# Process ID: 36172
+# Start of session at: Sat May  1 23:38:47 2021
+# Process ID: 37832
 # Current directory: C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent37068 C:\Users\samue\Documents\GitHub\Digital_electronic_project\Vivado_project\DE1_project.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent39280 C:\Users\samue\Documents\GitHub\Digital_electronic_project\Vivado_project\DE1_project.xpr
 # Log file: C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/vivado.log
 # Journal file: C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project\vivado.jou
 #-----------------------------------------------------------
@@ -17,10 +17,10 @@ Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
-open_project: Time (s): cpu = 00:00:12 ; elapsed = 00:00:05 . Memory (MB): peak = 1018.547 ; gain = 0.000
+open_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:05 . Memory (MB): peak = 1016.477 ; gain = 0.000
 update_compile_order -fileset sources_1
-set_property top tb_pwm [get_filesets sim_1]
+set_property top tb_top [get_filesets sim_1]
 set_property top_lib xil_defaultlib [get_filesets sim_1]
 update_compile_order -fileset sim_1
 exit
-INFO: [Common 17-206] Exiting Vivado at Sat May  1 22:38:56 2021...
+INFO: [Common 17-206] Exiting Vivado at Sat May  1 23:40:51 2021...
