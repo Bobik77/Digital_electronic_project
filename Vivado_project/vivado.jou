@@ -11,3 +11,15 @@
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/DE1_project.xpr
+update_compile_order -fileset sources_1
+set_property -name {xsim.simulate.runtime} -value {80ms} -objects [get_filesets sim_1]
+set_property is_enabled false [get_files  C:/Users/samue/Documents/GitHub/Digital_electronic_project/Vivado_project/tb_sensor_driver_behav.wcfg]
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top top [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+launch_simulation
+source tb_top.tcl
+close_sim
