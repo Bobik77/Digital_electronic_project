@@ -1,4 +1,6 @@
 # Sound driver
+Simulace pípání je přiložena ve wav souboru.
+
 Obsahuje moduly:
 * sound_memory.vhd
 * sound_logic.vhd
