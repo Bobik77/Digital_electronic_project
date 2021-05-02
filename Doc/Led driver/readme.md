@@ -5,16 +5,22 @@
     - `reset` 
     - `state_L`, `state_M`, `state_R` - 3x3b, stav senzorů, hodnota určuje vzdálenost od senzoru
 - výstupy:
-    - pro každou LED diodu 3b ('RGB')
+    - pro každou LED diodu 2b ('RGB' = 'XX0')
     - `LED_L0_o` až `LED_L3_o` - 4 diody pro levý směr
     - `LED_M0_o` až `LED_M3_o` - 4 diody pro střed
     - `LED_R0_o` až `LED_R3_o` - 4 diody pro pravý směr
 - konstanty:
-    - `c_blink_time` - konstanta udávající frekvenci blikání
+    - `c_BLINK_TIME` - konstanta udávající frekvenci blikání
     
 Do modulu je přiveden vstupní signál pro každý směr. Podle hodoty vstupního 
 signálu se přiřadí stav. Pro každý stav je poté vyhodnocen výstup. Jednotlivé 
 směry se navzájem neovlivní, každý je vyhodnocen separátně.
+
+Pozn.:
+- Původní výstupy byly řešeny jako 3bitové, ale jelikož bude třetí bit pro všechny barvy 
+nulový (Red = "100", Green = "010" a Yellow = "110"), třetí bit nepotřebujeme. 
+Také bychom pomocí daného počtu portů na desce nemohli takový objem dat přenést.
+- Simulace je znárorněna pro 3b výstupy.
 
 ## Stavy
 - rozlišuje se šest stavů, podle kterých je určen výstup

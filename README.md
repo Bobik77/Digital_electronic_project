@@ -1,4 +1,7 @@
 # Parking assistant with HC-SR04 ultrasonic sensor
+## Brief description
+Three distance sensors for three directions - left, middle, right. Sound signaling using 
+PWM and visual signaling using four RGB diodes for each direction.
 
 ### Team members:
 
@@ -18,39 +21,90 @@ Zbořil Dominik `ID: 221074`
 * the task:
     * Parking assistant with HC-SR04 ultrasonic sensor, sound signaling using PWM, 
     signaling by LED bargraph.
+* to do:
+    * [x] Block structure design
+    * [x] VHDL modules design and simulations
+    * [ ] PCD desk and hardware schemes
+    * [x] Top module design and simulation
+    * [ ] Documentation
+    * [ ] Video presentation
 
 ## Hardware description
+The project is created on Artys A7-100t board. The rest of necessary components are
+placed on PCB desk.
+### Artys A7-100t
+We used one button for reset signal and clock signal. Then we used four Pmod connectors 
+for conecting the board with PCB.
+### PCB
+The PCB board contains of twelve RGB diodes, three HC-SR04 sensors and ...
 
 ## VHDL modules description and simulations
 For additional description see README.md files for each module in folder Doc.
-### `sensor_driver`
+### `sensor_driver.vhd`
+![diagram_sensor_driver](Doc/img/diagram_sensor_driver2.png)
 
-### `control_unit`
+The task of this module is to compile the data from a sensor and distribute them
+to control unit. 
+
+### `control_unit.vhd`
+![diagram_control_unit](Doc/img/diagram_control_unit2.png)
+
 Takes input data from `sensor_driver` and convers them into required output. 
 The inputs are three 8b signals, one from each of the sensors. The output is 
 a 3b singal for each direction. These signals are input signals for `led_driver`. 
 The last output from this module is aslo a 3b signal, which is actually the one of
 the previous three with the smallest value. This signal goes to `sound_player`.
 
-### `led_driver`
-The module `led_driver` is the controller of 12 LED diodes. The input signals (3x3b) 
-are sorted by value into 6 states. For the greatist distance (over 200 cm) is output 
-zero and no led is shining. As the distance is increasing, the leds lights up gradually. 
+### `led_driver.vhd`
+![diagram_led_driver](Doc/img/diagram_led_driver2.png)
+
+The module is the controller of 12 LED diodes. The input signals (3x3b) are sorted 
+by value into 6 states. For the greatist distance (over 200 cm) is output zero and 
+no led is shining. As the distance is increasing, the leds lights up gradually. 
 First and second lit green, the third lid yellow and the last one lid red. For the 
 lowest distance are all four leds flashing red.
 
 
-### `sound_player`
+### `sound_player.vhd`
+![diagram_sound_player](Doc/img/diagram_sound_player2.png)
+
+It works with the memory and controls PWM D/A convertor. It includes the module `sound_memory`
+
 * `sound_memory`
     * Contains a short (0.8 s) section of audio.
     
+### `PWM.vhd`
+![diagram_pwm](Doc/img/diagram_pwm2.png)
 
+Generates a PWM signal. The signal can only take on values 1 or 0 with various duty cycle.
+Input is 8b from `sound_driver.vhd` and the output is 1b.
+    
+### `sound_logic.vhd`
+![diagram_pwm](Doc/img/diagram_sound_logic2.png)
+
+The module sortes the input into 6 beeping states. The freqency of beeping increases 
+with the decreasing distance from the sensors. For the nearist state the speaker makes
+sound constantly. Input is 1b from `PWM.vhd` and 3b from `control_unit.vhd` for 
+detection of state. Output is 1b which goes to speaker.
+    
 ## TOP module description and simulations
+### Top module architecture
 ![top_architecture](Doc/Top/img/top_module_architecture.png)
+
+### `Top.vhd`
+
+### Simulation of `Top.vhd`
 
 ## Video
 
 ## References
+
+## Discusion about problems 
+* Not enough leds on specified board.
+    * Solution: Add them to the PCB board.
+* Not enough output bits on Artys A7-100t.
+    * Solution: Delete the third bits on `led_driver.vhd` output signals, 
+    which is always a zero.
 
 ---------------------------------------------------------
 
