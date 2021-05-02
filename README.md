@@ -107,12 +107,14 @@ Here we will see specific simulations of each output. The simulation input param
 
 
 ### Simulation of sensor
-![top_architecture](Doc/Top/img/sensor_sim.PNG)
 This simulation shows us the effect of the corelation between the echo pulse and the distance.
 
+![top_architecture](Doc/Top/img/sensor_sim.PNG)
+
 ### Simulation of LEDs of left sensor
-![top_architecture](Doc/Top/img/ledL_sim.PNG)
 This simulation shows us not only the LEDS states and the given colour shinning for the left sensor but also the sensor output itself. When both green and red is activated, yellow shines.
+
+![top_architecture](Doc/Top/img/ledL_sim.PNG)
 
 ### Simulation of LED blinking at state HIGH2
 ![top_architecture](Doc/Top/img/led_proof.PNG)
@@ -123,13 +125,15 @@ This simulation shows us not only the LEDS states and the given colour shinning 
 ### Simulation of LEDs of right sensor
 ![top_architecture](Doc/Top/img/ledR_sim.PNG)
 
+This simulation shows us the sound output - the beeping signal. All sensor outputs are displayed so we can see the dependency of the speaker for the sensor with the object closest to it. For the purpose of this simulation the `on_state` time has been reduced in `sound_logic`.
+
 ### Simulation of speaker
-This simulation shows us the sound output - the peeping signal. All sensor outputs are displayed so we can see the dependency of the speaker for the sensor with the object closest to it. For the purpose of this simulation the `on_state` time has been reduced in `sound_logic`. 
 ![top_architecture](Doc/Top/img/sound_sim.PNG)
 
 ### Closer look at PWM signal
 This simulation shows us a nearer look at the pwm signal.
-![top_architecture](Doc/Top/img/pwm_proof_PNG)
+
+![top_architecture](Doc/Top/img/pwm_proof.PNG)
 
 ## Video
 
