@@ -21,7 +21,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity led_driver is
     generic(-- global variables
-        g_BILNK_TIME : natural := 20000000); --(200 ms) - time for turn on/off diode (in ticks)
+        g_BLINK_TIME : natural := 20000000);--(200 ms) - time for turn on/off diode (in ticks)
+        
     Port ( 
         clk       : in std_logic;     -- 100 MHz
         reset     : in std_logic;
@@ -62,7 +63,7 @@ architecture Behavioral of led_driver is
     
     -- values for local counter
     -- constant c_BLINK_TIME : integer := 20; -- for simulation needs
-    constant c_BLINK_TIME  : integer := 20000000; -- (200 ms) - time for turn on/off diode
+    constant c_BLINK_TIME  : integer := g_BLINK_TIME; -- (200 ms) - time for turn on/off diode
     constant c_ZERO        : integer := 0;        -- zero
     -- define colors output vector
     constant c_red         : std_logic_vector(1 downto 0) := "10"; -- Red
