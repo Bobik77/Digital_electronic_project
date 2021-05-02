@@ -95,6 +95,42 @@ detection of state. Output is 1b which goes to speaker.
 
 ### Simulation of `Top.vhd`
 
+Here we will see specific simulations of each output. The simulation input parameters for the sensor are as follows:
+
+
+   | **Left sensor distance** | **Middle sensor distance** | **Right sensor distance** |
+   | :-: | :-: | :-: |
+   | `137 cm` | `206 cm` | `51 cm` |
+   | `103 cm` | `144 cm` | `103 cm` |
+   | `51 cm` | `124 cm` | `137 cm` |
+   | `17 cm` | `103 cm` | `172 cm` |
+
+
+### Simulation of sensor
+![top_architecture](Doc/Top/img/sensor_sim.PNG)
+This simulation shows us the effect of the corelation between the echo pulse and the distance.
+
+### Simulation of LEDs of left sensor
+![top_architecture](Doc/Top/img/ledL_sim.PNG)
+This simulation shows us not only the LEDS states and the given colour shinning for the left sensor but also the sensor output itself. When both green and red is activated, yellow shines.
+
+### Simulation of LED blinking at state HIGH2
+![top_architecture](Doc/Top/img/led_proof.PNG)
+
+### Simulation of LEDs of middle sensor
+![top_architecture](Doc/Top/img/ledM_sim.PNG)
+
+### Simulation of LEDs of right sensor
+![top_architecture](Doc/Top/img/ledR_sim.PNG)
+
+### Simulation of speaker
+This simulation shows us the sound output - the peeping signal. All sensor outputs are displayed so we can see the dependency of the speaker for the sensor with the object closest to it. For the purpose of this simulation the `on_state` time has been reduced in `sound_logic`. 
+![top_architecture](Doc/Top/img/sound_sim.PNG)
+
+### Closer look at PWM signal
+This simulation shows us a nearer look at the pwm signal.
+![top_architecture](Doc/Top/img/pwm_proof_PNG)
+
 ## Video
 
 ## References
