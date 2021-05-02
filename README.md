@@ -125,9 +125,9 @@ This simulation shows us not only the LEDS states and the given colour shinning 
 ### Simulation of LEDs of right sensor
 ![top_architecture](Doc/Top/img/ledR_sim.PNG)
 
+### Simulation of the speaker
 This simulation shows us the sound output - the beeping signal. All sensor outputs are displayed so we can see the dependency of the speaker for the sensor with the object closest to it. For the purpose of this simulation the `on_state` time has been reduced in `sound_logic`.
 
-### Simulation of speaker
 ![top_architecture](Doc/Top/img/sound_sim.PNG)
 
 ### Closer look at PWM signal
