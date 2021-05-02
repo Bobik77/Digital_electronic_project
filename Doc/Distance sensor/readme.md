@@ -1,5 +1,5 @@
 # **HC-SR04** Ultrasound distance sensor
-
+Pro snímání vzdálenosti byl použit senzor dle zadání **HC-SR04**. Jeho datasheet je uveden v příloze.
 ## **Propozice:**
 * Napájení 5V, 15mA (realna spotřeba 5mA)
 * TTL uroveň 5V
