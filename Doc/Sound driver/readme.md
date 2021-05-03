@@ -1,14 +1,47 @@
-# Sound driver
-Simulace pípání je přiložena ve wav souboru.
+# Zvuková signalizace
+Podle vzdálenosti od překážky parkovací asistent vydává akustickou signalizaci. Ta je realizována PWM D/A převodíkem, který ve smyčce přehrává krátká wav soubor. Tento PWM signál je poté ještě modulovaný (spínaný) v závislosti na vzdálenosti od překážky.
 
-Obsahuje moduly:
+Simulace akustické signalizace pro různé stavy je přiložena ve [wav souboru](simulation_of_beep.wav).
+
+Zvuková signalizace je obsluhována těmito bloky:
+* sound_player.vhd
 * sound_memory.vhd
 * sound_logic.vhd
-* pwm DAC `TODO`
+* pwm.vhd 
 * sound_player.vhd
 
+# sound_player.vhd
+
+Tento modul má na starosti práci s pamětí a řízení PWM D/A převodníku. Přímo v sobě implementuje entitu paměťového bloku `sound_memory`. Lze zde také nastavit hlasitost konstantou `c_volume`. Vyšší konstanta znamená nižší hlasitost. (Vstupní amplituda z paměti se podělí touto konstantou a zapíše se na výstup `data_out`.)
+
+Je zde vytvořen interní signál hodin `s_sample_clock`, který má periodu vzorkovacího kmitočtu (zde 96kHz). V taktu těchto zpomalených hodin dochází právě k vyčítání dat ze zvukové paměti. Po přečtení všech samplů (viz konst. `c_n_samples`) se opět opakuje vyčítání od adresy **`0000_0000`**.
+
+**Specifikace:**
+* Konstanta hlasitosti `c_volume`, (nastavitelné globální proměnou `g_VOLUME`)
+* Konstanta samplovaciho kmitočtu (délka jednoho samplu v tiku hodin) `c_sample_period` (nastavitelné globální proměnou `g_TICKS_PER_SAMPLE`)
+* vstup 100 MHz hodin `clk`
+* výstup 8b, vektor pro řízení střídy PWM `data_out`
+* výstup 12b, adresní sběrnice pro paměť (interni signal) `s_address`
+* vstup 8b paměti (interni signal) `s_data_in`
+
+### Simulace modulu sound_player:
+Pro účely simulace:
+* `c_sample_period` <= 2
+* `c_volume` <= 4
+* `c_n_samples` <= 100
+
+Originální hodnoty:
+* `c_sample_period` <= 1042 (96kHz při 100MHz clk)
+* `c_volume` <=  ad. libitum
+* `c_n_samples` <= 2303
+
+![sim3](img/simulations/sound_player_test.png)
+### Detail simulace:
+![sim4](img/simulations/sound_player_test_detail.png)
+
+
 # sound_memory (součást sound_player.vhd)
-Modul obsahuje v paměti asi 0.8 sec dlouhý krátký [úsek audia](bump.wav) (mono). Tento výsek je setříhán tak, aby při přehrávání ve smyčce na sebe navazoval a v reproduktoru se tedy neozývalo nepřijemné "lupání".
+Modul obsahuje v paměti asi 0.8 sec krátký [úsek audia](bump.wav) (mono). Tento výsek je setříhán tak, aby při přehrávání ve smyčce na sebe navazoval a v reproduktoru se tedy neozývalo nepřijemné "lupání".
 
 Sestříhání a úprava vzorku audia byla provedena v programu **LogicProX**. Zvuk má royality free licenci.
 
@@ -28,35 +61,6 @@ Převod do unsigned integeru byl proveden za pomocí [skriptu v MATLABu](waw2arr
 ### Detail vyčítání z paměti:
 ![sim2](img/simulations/Memory_test_detail.png)
 
-# sound_player.vhd
-Modul vyčítá jednotlivé vzorky z paměti v přesně stanovený okamžik dle zadaného parametru vzorkování. 
-
-Tento modul má na starosti práci s pamětí a řízení PWM D/A převodníku. Přímo v sobě implementuje entitu paměťového bloku `sound_memory`. Lze zde také nastavit hlasitost konstantou `c_volume`. Vyšší konstanta znamená nižší hlasitost. (Vstupní amplituda z paměti se podělí touto konstantou a zapíše se na výstup `data_out`.)
-
-Je zde vytvořen interní signál hodin `s_sample_clock`, který má periodu vzorkovacího kmitočtu (zde 96kHz). V taktu tohoto signálu dochází právě k vyčítání dat ze zvukové paměti. Po přečtení všech samplů (viz const. `c_n_samples`) se opět opakuje vyčítání od adresy **`0000_0000`**.
-
-**Specifikace:**
-* Konstanta hlasitosti `c_volume`, (nastavitelné globální proměnou `g_VOLUME`)
-* Konstanta samplovaciho kmitočtu (tiky na hlavní hodinový signál) `c_sample_period` (nastavitelné globální proměnou `g_TICKS_PER_SAMPLE`)
-* vstup 100MHz hodin `clk`
-* výstup 8b, vektor pro pwm `data_out`
-* výstup 12b, adresní sběrnice pro paměť (interni signal) `s_address`
-* vstup 8b paměti (interni signal) `s_data_in`
-
-### Simulace modulu sound_player:
-Pro účely simulace:
-* `c_sample_period` <= 2
-* `c_volume` <= 4
-* `c_n_samples` <= 100
-
-Originální hodnoty:
-* `c_sample_period` <= 1042 (96kHz při 100MHz clk)
-* `c_volume` <=  ad. libitum
-* `c_n_samples` <= 2303
-
-![sim3](img/simulations/sound_player_test.png)
-### Detail simulace:
-![sim4](img/simulations/sound_player_test_detail.png)
 
 # pwm.vhd:
 V tomto module sa generuje pwm signál - signál ktorý môže nadobúdať len hodnoty 1 a 0, ale zmenou striedy (duty cycle, teda pomer signálu v stave 1 a 0), jeho priemerná hodnota môže nadobúdať tvar analogového signálu.
