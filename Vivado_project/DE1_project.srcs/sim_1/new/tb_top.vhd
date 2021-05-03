@@ -1,11 +1,11 @@
 ----------------------------------------------------------------------------------
 -- Company: 
--- Engineer: 
+-- Engineer: Turák Samuel
 -- 
 -- Create Date: 04/30/2021 04:57:43 PM
--- Design Name: 
+-- Design Name: tb_top.vhd
 -- Module Name: tb_top - Behavioral
--- Project Name: 
+-- Project Name: DE1 Project
 -- Target Devices: 
 -- Tool Versions: 
 -- Description: 
@@ -15,21 +15,13 @@
 -- Revision:
 -- Revision 0.01 - File Created
 -- Additional Comments:
--- 
+--      Same simulation settings as in the documentation
 ----------------------------------------------------------------------------------
 
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity tb_top is
 --  Port ( );
@@ -111,7 +103,7 @@ begin
         begin
             s_rst <= '0'; wait for 200 ns;
             -- Reset activated
-            s_rst <= '1'; wait for 500 ns;
+            s_rst <= '1'; wait for 1000 ns;
             -- Reset deactivated
             s_rst <= '0';
             wait;
@@ -121,7 +113,15 @@ begin
         begin
             s_echo_L_i <= '0';
                 
-            -- theoretical distance 170 cm
+                -- theoretical distance 137 cm
+                wait until rising_edge(s_trigger_L_o); -- rise of trigger
+                wait until falling_edge(s_trigger_L_o);-- fall of trigger
+                wait for 800 us; --tarry
+                s_echo_L_i <= '1';
+                wait for 8000 us; -- echo pulse width 58
+                s_echo_L_i <= '0';
+                
+            -- theoretical distance 103 cm
                 wait until rising_edge(s_trigger_L_o); -- rise of trigger
                 wait until falling_edge(s_trigger_L_o);-- fall of trigger
                 wait for 800 us; --tarry
@@ -129,7 +129,7 @@ begin
                 wait for 6000 us; -- echo pulse width 58
                 s_echo_L_i <= '0';
              
-              -- Max distance 130 cm   
+              -- Max distance 51 cm   
                 wait until rising_edge(s_trigger_L_o); -- rise of trigger
                 wait until falling_edge(s_trigger_L_o);-- fall of trigger
                 wait for 800 us; --tarry
@@ -137,6 +137,7 @@ begin
                 wait for 3000 us; -- echo pulse width
                 s_echo_L_i <= '0';
                 
+                -- Max distance 17 cm  
                 wait until rising_edge(s_trigger_L_o); -- rise of trigger
                 wait until falling_edge(s_trigger_L_o);-- fall of trigger
                 wait for 800 us; --tarry
@@ -165,27 +166,36 @@ begin
         begin
             s_echo_M_i <= '0';
             
-            -- theoretical distance 170 cm
+            -- theoretical distance 206 cm
                 wait until rising_edge(s_trigger_M_o); -- rise of trigger
                 wait until falling_edge(s_trigger_M_o);-- fall of trigger
                 wait for 800 us; --tarry
                 s_echo_M_i <= '1';
-                wait for 1000 us; -- echo pulse width 58
+                wait for 12000 us; -- echo pulse width 58
                 s_echo_M_i <= '0';
              
-              -- Max distance 130 cm   
+              -- Max distance 144 cm   
                 wait until rising_edge(s_trigger_M_o); -- rise of trigger
                 wait until falling_edge(s_trigger_M_o);-- fall of trigger
                 wait for 800 us; --tarry
                 s_echo_M_i <= '1';
-                wait for 1000 us; -- echo pulse width
+                wait for 8400 us; -- echo pulse width
                 s_echo_M_i <= '0';
                 
+                -- Max distance 124 cm 
                 wait until rising_edge(s_trigger_M_o); -- rise of trigger
                 wait until falling_edge(s_trigger_M_o);-- fall of trigger
                 wait for 800 us; --tarry
                 s_echo_M_i <= '1';
-                wait for 1000 us; -- echo pulse width
+                wait for 7200 us; -- echo pulse width
+                s_echo_M_i <= '0';
+                
+                -- Max distance 103 cm 
+                wait until rising_edge(s_trigger_M_o); -- rise of trigger
+                wait until falling_edge(s_trigger_M_o);-- fall of trigger
+                wait for 800 us; --tarry
+                s_echo_M_i <= '1';
+                wait for 6000 us; -- echo pulse width
                 s_echo_M_i <= '0';
                 
               -- Fault not responding 
@@ -208,30 +218,37 @@ begin
         p_sensor_simulation_R : process
         begin
             s_echo_R_i <= '0';
-            -- normal distance 250cm
+            -- normal distance 51 cm
                 wait until rising_edge(s_trigger_R_o); -- rise of trigger
                 wait until falling_edge(s_trigger_R_o);-- fall of trigger
                 wait for 800 us; --tarry
                 s_echo_R_i <= '1';
-                wait for 1000 us; -- echo pulse width
+                wait for 3000 us; -- echo pulse width
                 s_echo_R_i <= '0';  
                 
-            -- theoretical distance 170 cm
+            -- theoretical distance 103 cm
                 wait until rising_edge(s_trigger_R_o); -- rise of trigger
                 wait until falling_edge(s_trigger_R_o);-- fall of trigger
                 wait for 800 us; --tarry
                 s_echo_R_i <= '1';
-                wait for 1000 us; -- echo pulse width 58
+                wait for 6000 us; -- echo pulse width 58
                 s_echo_R_i <= '0';
              
-              -- Max distance 130 cm   
+              -- Max distance 137 cm   
                 wait until rising_edge(s_trigger_R_o); -- rise of trigger
                 wait until falling_edge(s_trigger_R_o);-- fall of trigger
                 wait for 800 us; --tarry
                 s_echo_R_i <= '1';
-                wait for 1000 us; -- echo pulse width
+                wait for 8000 us; -- echo pulse width
                 s_echo_R_i <= '0';
                 
+                -- Max distance 172 cm   
+                wait until rising_edge(s_trigger_R_o); -- rise of trigger
+                wait until falling_edge(s_trigger_R_o);-- fall of trigger
+                wait for 800 us; --tarry
+                s_echo_R_i <= '1';
+                wait for 10000 us; -- echo pulse width
+                s_echo_R_i <= '0';
                 
                 
               -- Fault not responding 
