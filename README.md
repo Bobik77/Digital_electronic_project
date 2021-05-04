@@ -55,7 +55,7 @@ Voltage conversion 3V3/5V and vice versa is solved by 2-way MosFET transistor so
 ![PCB_desk](Doc/img/board_visualisation.png) 
 
 ### Scheme
-In the picture below we can see the schematic of PCB board. We can divide the schematic into three blocks. The first block consists of only pin head connectors. These connectors are designed for perfect connection with the opposite connectors on the Arty A7 board. There is another one which has only three pins. First pin acts as 5V power supply because we do not have it yet, there is also 3,3V and GND for easy way to connect the board. The second block consists of the systems of RGB diodes which acts as optical visualization. For RGB we don’t need blue diode so there is no reason to link it. Thanks to that we save components and space on the board, but mainly the 12 pins which we don’t have to link. This is the reason why the boards fit so well together. In the third block we have the rest of components. The speaker for audio response and three pin head connectors for distance sensor [HC-SR04](Doc/Distancesensor/CHSR04_datasheet.pdf).
+In the picture below we can see the schematic of PCB board. We can divide the schematic into three blocks. The first block consists of only pin head connectors. These connectors are designed for perfect connection with the opposite connectors on the Arty A7 board. There is another one which has only three pins. First pin acts as 5V power supply because we do not have it yet, there is also 3,3V and GND for easy way to connect the board. The second block consists of the systems of RGB diodes which acts as optical visualization. For RGB we don’t need blue diode so there is no reason to link it. Thanks to that we save components and space on the board, but mainly the 12 pins which we don’t have to link. This is the reason why the boards fit so well together. In the third block we have the rest of components. The speaker for audio response and three pin head connectors for distance sensor [HC-SR04](Doc/Distance%20sensor/CHSR04_datasheet.pdf).
 
 ![schema_of_the_board](Project_data/HW/periphery_scheme.png)
 
@@ -70,7 +70,7 @@ sends a signal (trigger) to a sensor and waits for response by echo. Then starts
 and stops when echo signal finishes. Evaluates the data and send them by distance_o 
 (8b) signal to the `control_unit.vhd`. 
 
-[*want see more*]('Doc/Distance%20sensor/readme.md')
+[*want see more*](Doc/Distance%20sensor/readme.md)
 ### `control_unit.vhd`
 ![diagram_control_unit](Doc/img/diagram_control_unit2.png)
 
