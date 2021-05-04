@@ -47,9 +47,9 @@ The PCB board contains of twelve RGB diodes, three HC-SR04 sensors and a speaker
 ### Schema
 In the picture below we can see the schematic of PCB board. We can divide the schematic into three blocks. The first block consists of only pin head connectors. These connectors are designed for perfect connection with the opposite connectors on the Arty A7 board. There is another one which has only three pins. First pin acts as 5V power supply because we do not have it yet, there is also 3,3V and GND for easy way to connect the board. The second block consists of the systems of RGB diodes which acts as optical visualization. For RGB we don’t need blue diode so there is no reason to link it. Thanks to that we save components and space on the board, but mainly the 12 pins which we don’t have to link. This is the reason why the boards fit so well together. In the third block we have the rest of components. The speaker for audio response and three pin head connectors for distance sensor HC—SR04.
 ![schema_of_the_board](Doc/img/schema_of_the_board.png)
-### Front side
+### PCB layout front
 ![F_Cu](Doc/img/F_Cu.png)
-### Back side
+### PCB layout back
 ![B_Cu](Doc/img/B_Cu.png)
 
 ## VHDL modules description and simulations
