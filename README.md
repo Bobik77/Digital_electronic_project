@@ -70,7 +70,7 @@ sends a signal (trigger) to a sensor and waits for response by echo. Then starts
 and stops when echo signal finishes. Evaluates the data and send them by distance_o 
 (8b) signal to the `control_unit.vhd`. 
 
-[*want see more*]('Doc/Distance sensor/readme.md')
+[*want see more*]('Doc/Distance%20sensor/readme.md')
 ### `control_unit.vhd`
 ![diagram_control_unit](Doc/img/diagram_control_unit2.png)
 
@@ -80,7 +80,7 @@ a 3b singal for each direction. These signals are input signals for `led_driver`
 The last output from this module is aslo a 3b signal, which is actually the one of
 the previous three with the smallest value. This signal goes to `sound_player`.
 
-[*want see more*](Doc/ControlUnit/readme.md)
+[*want see more*](Doc/Control%20Unit/readme.md)
 ### `led_driver.vhd`
 ![diagram_led_driver](Doc/img/diagram_led_driver2.png)
 
@@ -90,7 +90,7 @@ no led is shining. As the distance is increasing, the leds lights up gradually.
 First and second lit green, the third lid yellow and the last one lid red. For the 
 lowest distance are all four leds flashing red.
 
-[*want see more*](Doc/Leddriver/readme.md)
+[*want see more*](Doc/Ledd%20river/readme.md)
 
 ### `sound_player.vhd`
 ![diagram_sound_player](Doc/img/diagram_sound_player2.png)
@@ -100,14 +100,14 @@ It works with the memory and controls PWM D/A convertor. It includes the module 
 * `sound_memory`
     * Contains a short (0.8 s) section of audio.
     
-[*want see more*](Doc/Sounddriver/readme.md)
+[*want see more*](Doc/Sound%20driver/readme.md)
 ### `PWM.vhd`
 ![diagram_pwm](Doc/img/diagram_pwm2.png)
 
 Generates a PWM signal. The signal can only take on values 1 or 0 with various duty cycle.
 Input is 8b from `sound_driver.vhd` and the output is 1b.
 
-[*want see more*](Doc/Sounddriver/readme.md)
+[*want see more*](Doc/Sound%20driver/readme.md)
     
 ### `sound_logic.vhd`
 ![diagram_pwm](Doc/img/diagram_sound_logic2.png)
@@ -117,7 +117,7 @@ with the decreasing distance from the sensors. For the nearist state the speaker
 sound constantly. Input is 1b from `PWM.vhd` and 3b from `control_unit.vhd` for 
 detection of state. Output is 1b which goes to speaker.
     
-[*want see more*](Doc/Sounddriver/readme.md)
+[*want see more*](Doc/Sound%20driver/readme.md)
 ## TOP module description and simulations
 ### Top module architecture
 ![top_architecture](Doc/Top/img/top_module_architecture.png)
