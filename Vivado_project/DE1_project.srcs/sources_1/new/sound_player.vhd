@@ -43,10 +43,11 @@ architecture Behavioral of sound_player is
     constant c_n_samples :           natural := 2303-1;   -- total numer of samples in memory, original val. 2303-1
     constant c_volume :              natural := g_VOLUME; --volume regulation 0 to cca 12,, higher means lower vol. 
     -- Local signals 
-    signal s_address :              unsigned(11 downto 0); -- addres signal for memory
-    signal s_sample_clk :           std_logic; --internal slowed clk   
-    signal s_clk_tick_counter :     unsigned (11 downto 0); -- counter for clock divider
-    signal s_data_in :              unsigned (7 downto 0); -- internal signal, memorz input
+    signal s_address :               unsigned(11 downto 0); -- addres signal for memory
+    signal s_sample_clk :            std_logic; --internal slowed clk   
+    signal s_clk_tick_counter :      unsigned (11 downto 0); -- counter for clock divider
+    signal s_data_in :               unsigned (7 downto 0); -- internal signal, memorz input
+    signal s_edge_detect :           std_logic;
 begin
     -- Sound Memory implemeentation
     e_sound_memoy: entity work.sound_memory
@@ -55,38 +56,30 @@ begin
         address => s_address,
         data_out => s_data_in);
     
-    -- INTERNAL CLOCK GENERATION (clk divider)
+    -- Cyclicaly sets address output from 0 to c_n_samples
+    -- incremet of address is do every g_TICKS_PER_SAMPLE-th tick
     p_internal_clk: process(clk) begin  
         if rising_edge(clk) then
             -- reset
             if (rst = '1') then
                 s_clk_tick_counter <= (others => '0');
                 s_sample_clk <= '0';
-            else -- do increment
+            else -- tick counter increment
                 s_clk_tick_counter <=  s_clk_tick_counter + 1;
-                    if (s_clk_tick_counter >= c_sample_period / 2) then
-                           s_clk_tick_counter <= (others => '0');
-                           s_sample_clk <= not s_sample_clk;
-                    end if;
-            end if; --rst='1'
-        end if; -- rising_edge(clk)
-    end process p_internal_clk;
-    
-    -- ADRESS OUTPUT ACTUALISE
-    -- cyclicaly set addres 0 to c_n_samples
-    p_samples_loading: process(clk, s_sample_clk) begin
-        if(rising_edge(clk) and (rst = '1')) then
-            s_address <= (others => '0'); 
-        else
-            if rising_edge(s_sample_clk) then
+                -- tick counter overflow
+                if (s_clk_tick_counter >= c_sample_period / 2) then
+                   s_clk_tick_counter <= (others => '0');
+                   s_sample_clk <= not s_sample_clk;
+                end if;
+                -- ADRESS OUTPUT ACTUALISE
                 s_address <= s_address + 1; -- set next address
                 -- addres counter overflow
                 if (s_address >= c_n_samples) then 
                     s_address <= (others => '0');
-                end if; 
-            end if;       
-        end if;
-    end process p_samples_loading;
+                end if;             
+            end if; --rst='1', else
+        end if; -- rising_edge(clk)
+    end process p_internal_clk;
     
     -- OUTPUT ACTUALISE, volume regulation
     p_volume_regulation: process(s_data_in) begin
