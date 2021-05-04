@@ -1,21 +1,30 @@
 ----------------------------------------------------------------------------------
 -- Company: 
--- Engineer: PVL
+-- Engineer: Vanek Pavel
 -- 
 -- Create Date: 30.04.2021 11:44:58
--- Design Name: 
+-- Design Name: top.vhd
 -- Module Name: top - Behavioral
--- Project Name: 
--- Target Devices: 
+-- Project Name: DE1_project
+-- Target Devices: Arty A7
 -- Tool Versions: 
 -- Description: 
+--      top module of projet. Connect all componnents together. 
+--      See documentation top module scheme
 -- 
--- Dependencies: 
--- 
--- Revision: 1
--- Revision 0.01 - File Created
+-- Dependencies: sensor_driver.vhd
+--               control_unit.vhd
+--               led_driver.vhd
+--               soud_player.vhd
+--                  -sound_memory.vhd
+--               pwm.vhd
+--               sound_logic.vhd
+--                           
+-- Revision 1.0 - Final
 -- Additional Comments:
--- 
+--         -Uncoment marked lines for fast simulation,
+--          otherwise real timing (default) is used.
+--         -Costum external periphery board is used, see doc.
 ----------------------------------------------------------------------------------
 
 
@@ -103,8 +112,8 @@ begin
     -- Instance of sensor driver for RIGHT side
     sensor_driver_2: entity work.sensor_driver
         port map(-- control signals
-                 clk    => CLK,
-                 rst    => RST,
+                 clk          => CLK,
+                 rst          => RST,
                  -- sensor connection
                  echo_i       => echo_R_i,
                  trigger_o    => trigger_R_o,
@@ -133,28 +142,27 @@ begin
     ----------------------------------------------------------------------------------
     -- Instance of led driver
     led_driver_0: entity work.led_driver
-        generic map(g_BLINK_TIME => 20) -- uncomment for fast simulation
-              
+        --generic map(g_BLINK_TIME => 20) -- uncomment for fast simulation
         port map(-- control signals
-                 clk    => CLK,
-                 reset    => RST,
+                 clk         => CLK,
+                 reset       => RST,
                  -- state inputs
-                 state_L_i => s_led_L_state, -- left  side
-                 state_M_i => s_led_M_state, -- middle
-                 state_R_i => s_led_R_state, -- right side
+                 state_L_i   => s_led_L_state, -- left  side
+                 state_M_i   => s_led_M_state, -- middle
+                 state_R_i   => s_led_R_state, -- right side
                  -- LED outputs
-                 LED_L0_o => LED_L0_o, -- left side LEDs
-                 LED_L1_o => LED_L1_o,
-                 LED_L2_o => LED_L2_o,
-                 LED_L3_o => LED_L3_o,
-                 LED_M0_o => LED_M0_o, -- middle     LEDs
-                 LED_M1_o => LED_M1_o,
-                 LED_M2_o => LED_M2_o,
-                 LED_M3_o => LED_M3_o,
-                 LED_R0_o => LED_R0_o, -- right side LEDs
-                 LED_R1_o => LED_R1_o,
-                 LED_R2_o => LED_R2_o,
-                 LED_R3_o => LED_R3_o);
+                 LED_L0_o   => LED_L0_o, -- left side LEDs
+                 LED_L1_o   => LED_L1_o,
+                 LED_L2_o   => LED_L2_o,
+                 LED_L3_o   => LED_L3_o,
+                 LED_M0_o   => LED_M0_o, -- middle     LEDs
+                 LED_M1_o   => LED_M1_o,
+                 LED_M2_o   => LED_M2_o,
+                 LED_M3_o   => LED_M3_o,
+                 LED_R0_o   => LED_R0_o, -- right side LEDs
+                 LED_R1_o   => LED_R1_o,
+                 LED_R2_o   => LED_R2_o,
+                 LED_R3_o   => LED_R3_o);
                                 
     ----------------------------------------------------------------------------------
     -- SOUND ACTUATOR
@@ -162,8 +170,8 @@ begin
     -- Instance of sound player with memory
     sound_player_0 : entity work.sound_player
         generic map(-- global constants
-                    g_TICKS_PER_SAMPLE => 1042,  --sample duration in ticks; original value = 1042
-                    g_VOLUME           => 5)   --volume adjust
+                    --g_TICKS_PER_SAMPLE => 10,  --uncomment for fast simulation
+                    g_VOLUME           => 2)     --volume preset
         port map(-- control signals
                  clk      => CLK,
                  rst      => RST,

@@ -1,19 +1,18 @@
 ----------------------------------------------------------------------------------
 -- Company: 
--- Engineer: 
+-- Engineer: Zdenka Varmuzova
 -- 
--- Create Date: 21.04.2021 08:28:24
--- Design Name: 
+-- Create Date: 21.04.2021
+-- Design Name: tb_led_driver
 -- Module Name: tb_led_driver - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
+-- Project Name: DE1_project
+-- Target Devices: Arty A7: 
 -- Description: 
--- 
--- Dependencies: 
+--          testbench for led_driver.vhd module
+-- Dependencies: NONE
 -- 
 -- Revision:
--- Revision 0.01 - File Created
+-- Revision 1 - Final
 -- Additional Comments:
 -- 
 ----------------------------------------------------------------------------------
@@ -22,17 +21,9 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity tb_led_driver is
---  Port ( );
+--  empty
 end tb_led_driver;
 
 architecture Behavioral of tb_led_driver is

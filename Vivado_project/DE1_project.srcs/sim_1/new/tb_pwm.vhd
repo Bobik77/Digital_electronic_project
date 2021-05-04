@@ -13,7 +13,7 @@
 -- Dependencies: 
 -- 
 -- Revision:
--- Revision 0.01 - File Created
+-- Revision 1.0 - Fine
 -- Additional Comments:
 --      Ideal simulation time for these settings is 30 microseconds
 ----------------------------------------------------------------------------------

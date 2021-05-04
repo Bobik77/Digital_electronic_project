@@ -1,4 +1,21 @@
-
+----------------------------------------------------------------------------------
+-- Engineer: Pavel Vanek
+-- 
+-- Create Date: 07.04.2021 14:58:57
+-- Design Name: tb_sound_driver.vhd
+-- Module Name: sensor_driver 
+-- Project Name: DE1_project
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: 
+--      simple test bench for sound_player.vhd. Also could be used as tb for
+--      sound_memory.vhd (instanted in soud_player.vhd). This doesnt contains asserts
+--      checkout >> visual check is more effective and safe.
+-- Dependencies: 
+-- 
+-- Revision:
+-- Revision 1.0 - Final
+----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL; 
@@ -9,7 +26,7 @@ entity tb_sound_player is
 end tb_sound_player;
 
 architecture Behavioral of tb_sound_player is
-    
+   
     -- local constants
     constant c_clk_period : time := 10 ns;
     -- local signals
