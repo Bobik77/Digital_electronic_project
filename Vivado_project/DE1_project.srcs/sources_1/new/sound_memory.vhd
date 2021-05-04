@@ -1,13 +1,26 @@
-
+----------------------------------------------------------------------------------
+-- Engineer: Pavel Vanek
+-- 
+-- Create Date: 09.04.2021
+-- Module Name: sound_memory - Behavioral
+-- Project Name: Digital_electronic_project
+-- Target Devices: Arty A7
+-- Description: 
+--      Simple one out port memory bank. Contains wav sound data,
+--      converted into unsigned int.
+-- Dependencies: 
+-- 
+-- Revision 1.01 - uploaded wav sound
+-- Additional Comments:
+--      polyphonic: MONO
+--      n samples: 2033
+--      sampling freq: 96kHz
+--      sound: bump.wav
+----------------------------------------------------------------------------------
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity sound_memory is
   Port (

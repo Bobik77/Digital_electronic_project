@@ -1,6 +1,17 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Engineer: Dominik Zboril
+-- 
+-- Create Date: 09.04.2021
+-- Module Name: control_unit
+-- Project Name: Digital_electronic_project
+-- Target Devices: Arty A7
+-- Description: 
+--      Converts 8bit distance vector into max 8 different states.
+--      Controls led and sound actuators
+-- Dependencies: NONE
+-- 
+-- Revision 1.0 
+-- Additional Comments:
 ----------------------------------------------------------------------------------
 
 library ieee;               -- Standard library
@@ -60,7 +71,7 @@ begin
         end if;            
     end process p_select_input;
     
-    -- Sound code  
+    -- Generate output state vector for sound logic
      p_sound : process(inter_sound)
      begin
         if (inter_sound >= b"0000_0001")    and (inter_sound <= b"0001_1101") then -- Option 1 (1-29cm)
@@ -83,7 +94,7 @@ begin
      end process p_sound; 
     
     
-     -- Code for led_L_o  
+     -- Generate output state vector for left side LEDs
      p_led_L : process(left_i)
      begin   
         if (left_i >= b"0000_0001")    and (left_i <= b"0001_1101") then -- Option 1 (1-29cm)
@@ -105,7 +116,7 @@ begin
         end if;
  end process p_led_L;
     
-     -- Code for led_M_o    
+     -- Generate output state vector for middle LEDs strip
      p_led_M : process(mid_i)
      begin   
         if (mid_i >= b"0000_0001")    and (mid_i <= b"0001_1101") then -- Option 1 (1-29cm)
@@ -127,7 +138,7 @@ begin
         end if;
      end process p_led_M;
      
-     -- Code for led_R_o  
+     -- Generate output state vector for right side LEDs
      p_led_R : process(right_i)
      begin   
         if (right_i >= b"0000_0001")    and (right_i <= b"0001_1101") then -- Option 1 (1-29cm)

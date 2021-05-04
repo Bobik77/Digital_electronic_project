@@ -1,21 +1,23 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Engineer: Pavel Vanek
 -- 
 -- Create Date: 26.04.2021 19:04:04
--- Design Name: 
--- Module Name: sound_player - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
+-- Design Name: sound_player.vhd
+-- Module Name: sound_player
+-- Project Name:  DE1 Project
+-- Target Devices: Arty A7
 -- Description: 
+--      generation 8bit wide audio stream (wav) for ADC.
+--      Cloud be used global parameter for setting
 -- 
 -- Dependencies: 
--- 
+--      sound_memory.vhd
 -- Revision:
--- Revision 0.01 - File Created
+-- Revision 2.01 
 -- Additional Comments:
--- 
+--      Global parameters:
+--          g_VOLUME            -- volume preset (1 is loudest)        
+--          g_TICKS_PER_SAMPLES -- length of one sample in clk ticks
 ----------------------------------------------------------------------------------
 
 
@@ -23,10 +25,6 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity sound_player is
     generic(
@@ -42,7 +40,7 @@ end sound_player;
 architecture Behavioral of sound_player is
     -- Local constants
     constant c_sample_period :       natural := g_TICKS_PER_SAMPLE; -- length of sample in clk ticks, 
-    constant c_n_samples :           natural := 2303-1; -- total numer of samples in memorz // original 2303-1
+    constant c_n_samples :           natural := 2303-1;   -- total numer of samples in memory, original val. 2303-1
     constant c_volume :              natural := g_VOLUME; --volume regulation 0 to cca 12,, higher means lower vol. 
     -- Local signals 
     signal s_address :              unsigned(11 downto 0); -- addres signal for memory
@@ -57,7 +55,7 @@ begin
         address => s_address,
         data_out => s_data_in);
     
-    -- INTERNAL CLOCK GENERATION (divider)
+    -- INTERNAL CLOCK GENERATION (clk divider)
     p_internal_clk: process(clk) begin  
         if rising_edge(clk) then
             -- reset
