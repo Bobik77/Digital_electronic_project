@@ -1,5 +1,5 @@
 # Parking assistant with HC-SR04 ultrasonic sensor
-## Brief description
+### Brief description
 Three distance sensors for three directions - left, middle, right. Sound signaling using 
 PWM and visual signaling using four RGB diodes for each direction.
 
@@ -24,19 +24,25 @@ Zbořil Dominik `ID: 221074`
 * to do:
     * [x] Block structure design
     * [x] VHDL modules design and simulations
-    * [ ] PCD desk and hardware schemes
+    * [x] PCB desk and hardware schemes
     * [x] Top module design and simulation
     * [ ] Documentation
+    * [ ] Generate bitstream file
     * [ ] Video presentation
 
 ## Hardware description
 The project is created on Artys A7-100t board. The rest of necessary components are
 placed on PCB desk.
+
 ### Artys A7-100t
 We used one button for reset signal and clock signal. Then we used four Pmod connectors 
 for conecting the board with PCB.
+![Artys_desk](Doc/img/main_board_visualisation.png) 
+
 ### PCB
-The PCB board contains of twelve RGB diodes, three HC-SR04 sensors and ...
+The PCB board contains of twelve RGB diodes, three HC-SR04 sensors and a speaker.
+#### Visualization of PCB desk
+![PCB_desk](Doc/img/board_visualisation.png) 
 
 ## VHDL modules description and simulations
 For additional description see README.md files for each module in folder Doc.
@@ -44,7 +50,10 @@ For additional description see README.md files for each module in folder Doc.
 ![diagram_sensor_driver](Doc/img/diagram_sensor_driver2.png)
 
 The task of this module is to compile the data from a sensor and distribute them
-to control unit. 
+to control unit. The input signal from sensor is echo and output is trigger. The module
+sends a signal (trigger) to a sensor and waits for response by echo. Then starts caltulating
+and stops when echo signal finishes. Evaluates the data and send them by distance_o 
+(8b) signal to the `control_unit.vhd`. 
 
 ### `control_unit.vhd`
 ![diagram_control_unit](Doc/img/diagram_control_unit2.png)
@@ -91,8 +100,6 @@ detection of state. Output is 1b which goes to speaker.
 ### Top module architecture
 ![top_architecture](Doc/Top/img/top_module_architecture.png)
 
-### `Top.vhd`
-
 ### Simulation of `Top.vhd`
 
 Here we will see specific simulations of each output. The simulation input parameters for the sensor are as follows:
@@ -136,8 +143,10 @@ This simulation shows us a nearer look at the pwm signal.
 ![pwm_proof](Doc/Top/img/pwm_proof.PNG)
 
 ## Video
+[Link to video](https://...)
 
 ## References
+*  [Artys A7-100t](https://store.digilentinc.com/arty-a7-artix-7-fpga-development-board/)
 
 ## Discusion about problems 
 * Not enough leds on specified board.
