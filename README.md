@@ -30,9 +30,9 @@ Zbořil Dominik `ID: 221074`
     * [x] VHDL modules design and simulations
     * [x] PCB desk and hardware schemes
     * [x] Top module design and simulation
-    * [ ] Documentation
+    * [x] Documentation
     * [x] Generate bitstream file
-    * [ ] Video presentation
+    * [x] Video presentation
 
 ## Hardware description
 The project is created on Artys A7-100t board. The rest of necessary components are
@@ -44,7 +44,7 @@ for conecting the board with PCB.
 ![Artys_desk](Doc/img/main_board_visualisation.png) 
 
 ### Periphery PCB
-On periphery board are assigned all 3 distance sensors and 12 RGB LEDS, four for each direction. Only red and green emiting chip are used. We could use only two-colour LED, but 3-colours LEDs are more common and in most cases less expensives.
+On periphery board are assigned all 3 distance sensors and 12 RGB LEDS, four for each direction. Only red and green emiting chips are used. We could use only two-colour LED, but 3-colours LEDs are more common and in most cases less expensives.
 
 There is also sound small speaker with ĺow-pass filter (used for demodulation of PWM) and op. amplifier. You could see piezo buzzer at 3D model, but cicuit is designed for use standart coil speaker. Piezo model was used only for PCB view.
 
@@ -66,7 +66,7 @@ For additional description see README.md files for each module in folder Doc.
 
 The task of this module is to compile the data from a sensor and distribute them
 to control unit. The input signal from sensor is echo and output is trigger. The module
-sends a signal (trigger) to a sensor and waits for response by echo. Then starts caltulating
+sends a signal (trigger) to a sensor and waits for response by echo. Then starts calculating
 and stops when echo signal finishes. Evaluates the data and send them by distance_o 
 (8b) signal to the `control_unit.vhd`. 
 
@@ -85,7 +85,7 @@ the previous three with the smallest value. This signal goes to `sound_player`.
 ![diagram_led_driver](Doc/img/diagram_led_driver2.png)
 
 The module is the controller of 12 LED diodes. The input signals (3x3b) are sorted 
-by value into 6 states. For the greatist distance (over 200 cm) is output zero and 
+by value into 6 states. For the greatest distance (over 200 cm) is output zero and 
 no led is shining. As the distance is increasing, the leds lights up gradually. 
 First and second lit green, the third lid yellow and the last one lid red. For the 
 lowest distance are all four leds flashing red.
@@ -112,8 +112,8 @@ Input is 8b from `sound_driver.vhd` and the output is 1b.
 ### `sound_logic.vhd`
 ![diagram_pwm](Doc/img/diagram_sound_logic2.png)
 
-The module sortes the input into 6 beeping states. The freqency of beeping increases 
-with the decreasing distance from the sensors. For the nearist state the speaker makes
+The module sortes the input into 6 beeping states. The frequency of beeping increases 
+with the decreasing distance from the sensors. For the nearest state the speaker makes
 sound constantly. Input is 1b from `PWM.vhd` and 3b from `control_unit.vhd` for 
 detection of state. Output is 1b which goes to speaker.
     
@@ -165,7 +165,7 @@ This simulation shows us a nearer look at the pwm signal.
 ![pwm_proof](Doc/Top/img/pwm_proof.PNG)
 
 ## Video
-[Link to video](https://...)
+[**Link to video**](https://youtu.be/pjzVCtl6bvI)
 
 ## References
 *  [Arty A7-100t board documentacion](https://store.digilentinc.com/arty-a7-artix-7-fpga-development-board/)
