@@ -70,7 +70,7 @@ sends a signal (trigger) to a sensor and waits for response by echo. Then starts
 and stops when echo signal finishes. Evaluates the data and send them by distance_o 
 (8b) signal to the `control_unit.vhd`. 
 
-[*want see more*](Doc/Distancesensor/readme.md)
+[*want see more*]('Doc/Distance sensor/readme.md')
 ### `control_unit.vhd`
 ![diagram_control_unit](Doc/img/diagram_control_unit2.png)
 
